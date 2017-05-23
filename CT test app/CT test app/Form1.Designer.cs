@@ -38,6 +38,9 @@
             this.rotCenter = new System.Windows.Forms.Button();
             this.rotRight = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtSensor = new System.Windows.Forms.RichTextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnScan
@@ -79,6 +82,10 @@
             this.cboPorts.Size = new System.Drawing.Size(75, 21);
             this.cboPorts.TabIndex = 3;
             // 
+            // serialPort1
+            // 
+            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
+            // 
             // rotLeft
             // 
             this.rotLeft.Location = new System.Drawing.Point(64, 102);
@@ -118,11 +125,31 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "rotatie";
             // 
+            // txtSensor
+            // 
+            this.txtSensor.Location = new System.Drawing.Point(6, 19);
+            this.txtSensor.Name = "txtSensor";
+            this.txtSensor.ReadOnly = true;
+            this.txtSensor.Size = new System.Drawing.Size(192, 161);
+            this.txtSensor.TabIndex = 8;
+            this.txtSensor.Text = "";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtSensor);
+            this.groupBox1.Location = new System.Drawing.Point(232, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(202, 188);
+            this.groupBox1.TabIndex = 9;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Light Sensor";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(607, 512);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.rotRight);
             this.Controls.Add(this.rotCenter);
@@ -134,6 +161,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -150,6 +178,8 @@
         private System.Windows.Forms.Button rotCenter;
         private System.Windows.Forms.Button rotRight;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RichTextBox txtSensor;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 
