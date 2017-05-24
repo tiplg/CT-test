@@ -33,7 +33,7 @@ namespace CT_test_app
         {
             mainTimer = new Timer();
             mainTimer.Tick += new EventHandler(mainLoop);
-            mainTimer.Interval = 1000;
+            mainTimer.Interval = 100;
             mainTimer.Start();
         }
 
@@ -42,8 +42,8 @@ namespace CT_test_app
             if (serialPort1.IsOpen)
             {
                 byte[] outBuffer = new byte[3];
-                outBuffer[0] = 1;
-                outBuffer[1] = 1;
+                outBuffer[0] = 3;
+                outBuffer[1] = 8;
                 outBuffer[2] = (byte)rotatie;
                 serialPort1.Write(outBuffer, 0, 3);
                 Console.WriteLine(outBuffer[2].ToString());
