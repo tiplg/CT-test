@@ -13,6 +13,8 @@ namespace CT_test_app
 {
     public partial class Form1 : Form
     {
+        delegate void SetTextCallback(string text);
+
         private Timer mainTimer;
 
         int rotatie = 0;
@@ -37,16 +39,39 @@ namespace CT_test_app
             mainTimer.Start();
         }
 
+        private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            string[] result;
+            char[] sep = { ',', '\n',' '};
+            string incommingString = serialPort1.ReadLine();
+            result = incommingString.Split(sep);
+
+            if(result[0] == "lux")
+            {
+                //result[1] = result[1].TrimEnd('\r');
+                SetText(result[1]);
+                //Console.Write(result[1]);
+            }
+            //Console.WriteLine(result[0]) ;
+            
+
+            //Console.Write(incommingString);
+
+        }
+
         public void updateCT()
         {
             if (serialPort1.IsOpen)
             {
-                byte[] outBuffer = new byte[3];
-                outBuffer[0] = 3;
-                outBuffer[1] = 8;
-                outBuffer[2] = (byte)rotatie;
-                serialPort1.Write(outBuffer, 0, 3);
-                Console.WriteLine(outBuffer[2].ToString());
+                if (rotatie != 0)
+                {
+                    int adress = 2;
+                    int command = 9 + rotatie;
+                    serialPort1.WriteLine(adress + "," + command + "," + "100");
+                    //Console.WriteLine(adress + "," + command + "," + rotatie.ToString());
+                }
+                
+                //
             }
         }
 
@@ -122,5 +147,20 @@ namespace CT_test_app
         {
             rotatie = 0;
         }
+
+        private void SetText(string text)
+        {
+            if (this.txtSensor.InvokeRequired)
+            {
+                SetTextCallback d = new SetTextCallback(SetText);
+                this.Invoke(d, new object[] { text });
+            }
+            else
+            {
+                this.txtSensor.AppendText(text);
+            }
+        }
+
+
     }
 }
