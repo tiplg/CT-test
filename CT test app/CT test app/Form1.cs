@@ -15,6 +15,8 @@ namespace CT_test_app
     {
         delegate void SetTextCallback(string text);
 
+        Accelerometer accel;
+
         private Timer mainTimer;
 
         int rotatie = 0;
@@ -23,12 +25,15 @@ namespace CT_test_app
         {
             InitializeComponent();
             InitTimer();
+
+            accel = new Accelerometer(serialPort1);
         }
 
         private void mainLoop(object sender, EventArgs e)
         {
             //Console.WriteLine(rotatie);
             updateCT();
+            updateControls();
         }
 
         public void InitTimer()
@@ -48,9 +53,17 @@ namespace CT_test_app
 
             if(result[0] == "lux")
             {
-                //result[1] = result[1].TrimEnd('\r');
                 SetText(result[1]);
-                //Console.Write(result[1]);
+            }
+            else if (result[0] == "acc")
+            {
+                //int x = Convert.ToInt32(result[1]);
+                accel.InsertData(result[1], result[2], result[3]);
+                //Console.WriteLine(accel.angle);
+
+                //Console.WriteLine("x: " + accel.forceX.ToString() + " y: " + accel.forceY.ToString() + " z: " + accel.forceZ.ToString());
+
+                
             }
             //Console.WriteLine(result[0]) ;
             
@@ -66,13 +79,21 @@ namespace CT_test_app
                 if (rotatie != 0)
                 {
                     int adress = 2;
-                    int command = 9 + rotatie;
+                    int command = rotatie;
                     serialPort1.WriteLine(adress + "," + command + "," + "100");
                     //Console.WriteLine(adress + "," + command + "," + rotatie.ToString());
                 }
                 
                 //
             }
+        }
+
+        public void updateControls()
+        {
+            boxAngle.Text = accel.angle.ToString("0.00");
+            boxForceX.Text = accel.forceX.ToString("0.00");
+            boxForceY.Text = accel.forceY.ToString("0.00");
+            boxForceZ.Text = accel.forceZ.ToString("0.00");
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -130,7 +151,7 @@ namespace CT_test_app
 
         private void rotLeft_MouseDown(object sender, MouseEventArgs e)
         {
-            rotatie = 1;
+            rotatie = 10;
         }
 
         private void rotLeft_MouseUp(object sender, MouseEventArgs e)
@@ -140,7 +161,7 @@ namespace CT_test_app
 
         private void rotRight_MouseDown(object sender, MouseEventArgs e)
         {
-            rotatie = 2;
+            rotatie = 11;
         }
 
         private void rotRight_MouseUp(object sender, MouseEventArgs e)
