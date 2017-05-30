@@ -16,6 +16,7 @@ namespace CT_test_app
         delegate void SetTextCallback(string text);
 
         Accelerometer accel;
+        LinearArduino linArduino;
 
         private Timer mainTimer;
 
@@ -27,6 +28,7 @@ namespace CT_test_app
             InitTimer();
 
             accel = new Accelerometer(serialPort1);
+            linArduino = new LinearArduino(serialPort1, 9);
         }
 
         private void mainLoop(object sender, EventArgs e)
@@ -180,6 +182,16 @@ namespace CT_test_app
             {
                 this.txtSensor.AppendText(text);
             }
+        }
+
+        private void rotLeft_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rotLL_Click(object sender, EventArgs e)
+        {
+            linArduino.blinkled(500);
         }
 
 
