@@ -46,9 +46,15 @@
             this.lin2Right = new System.Windows.Forms.Button();
             this.lin2Left = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.linHome = new System.Windows.Forms.Button();
+            this.linSweepLeft = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rotLL = new System.Windows.Forms.Button();
+            this.lin1LL = new System.Windows.Forms.Button();
+            this.lin2LL = new System.Windows.Forms.Button();
+            this.rotRR = new System.Windows.Forms.Button();
+            this.lin2RR = new System.Windows.Forms.Button();
+            this.lin1RR = new System.Windows.Forms.Button();
             this.Accelerometer = new System.Windows.Forms.GroupBox();
             this.boxForceZ = new System.Windows.Forms.TextBox();
             this.boxForceY = new System.Windows.Forms.TextBox();
@@ -58,15 +64,17 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.rotRR = new System.Windows.Forms.Button();
-            this.lin2RR = new System.Windows.Forms.Button();
-            this.lin1RR = new System.Windows.Forms.Button();
-            this.rotLL = new System.Windows.Forms.Button();
-            this.lin1LL = new System.Windows.Forms.Button();
-            this.lin2LL = new System.Windows.Forms.Button();
+            this.linSweepRight = new System.Windows.Forms.Button();
+            this.rotStepRight = new System.Windows.Forms.Button();
+            this.rotHome = new System.Windows.Forms.Button();
+            this.rotStepLeft = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.getSamples = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.Accelerometer.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnScan
@@ -110,6 +118,7 @@
             // 
             // serialPort1
             // 
+            this.serialPort1.BaudRate = 250000;
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
             // rotLeft
@@ -132,6 +141,7 @@
             this.rotRight.TabIndex = 6;
             this.rotRight.Text = ">";
             this.rotRight.UseVisualStyleBackColor = true;
+            this.rotRight.Click += new System.EventHandler(this.rotRight_Click);
             this.rotRight.MouseDown += new System.Windows.Forms.MouseEventHandler(this.rotRight_MouseDown);
             this.rotRight.MouseUp += new System.Windows.Forms.MouseEventHandler(this.rotRight_MouseUp);
             // 
@@ -150,16 +160,17 @@
             this.txtSensor.Location = new System.Drawing.Point(6, 19);
             this.txtSensor.Name = "txtSensor";
             this.txtSensor.ReadOnly = true;
-            this.txtSensor.Size = new System.Drawing.Size(101, 163);
+            this.txtSensor.Size = new System.Drawing.Size(123, 153);
             this.txtSensor.TabIndex = 8;
             this.txtSensor.Text = "";
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.getSamples);
             this.groupBox1.Controls.Add(this.txtSensor);
-            this.groupBox1.Location = new System.Drawing.Point(340, 12);
+            this.groupBox1.Location = new System.Drawing.Point(238, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(113, 191);
+            this.groupBox1.Size = new System.Drawing.Size(135, 211);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Light Sensor";
@@ -221,29 +232,31 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(19, 243);
+            this.label4.Location = new System.Drawing.Point(7, 53);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 13);
+            this.label4.Size = new System.Drawing.Size(68, 13);
             this.label4.TabIndex = 20;
-            this.label4.Text = "Sweep";
+            this.label4.Text = "Sweep linear";
             // 
-            // button1
+            // linHome
             // 
-            this.button1.Location = new System.Drawing.Point(113, 238);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(23, 23);
-            this.button1.TabIndex = 19;
-            this.button1.Text = ">";
-            this.button1.UseVisualStyleBackColor = true;
+            this.linHome.Location = new System.Drawing.Point(110, 48);
+            this.linHome.Name = "linHome";
+            this.linHome.Size = new System.Drawing.Size(43, 23);
+            this.linHome.TabIndex = 19;
+            this.linHome.Text = "Home";
+            this.linHome.UseVisualStyleBackColor = true;
+            this.linHome.Click += new System.EventHandler(this.linHome_Click);
             // 
-            // button2
+            // linSweepLeft
             // 
-            this.button2.Location = new System.Drawing.Point(84, 238);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(23, 23);
-            this.button2.TabIndex = 18;
-            this.button2.Text = "<";
-            this.button2.UseVisualStyleBackColor = true;
+            this.linSweepLeft.Location = new System.Drawing.Point(81, 48);
+            this.linSweepLeft.Name = "linSweepLeft";
+            this.linSweepLeft.Size = new System.Drawing.Size(23, 23);
+            this.linSweepLeft.TabIndex = 18;
+            this.linSweepLeft.Text = "<";
+            this.linSweepLeft.UseVisualStyleBackColor = true;
+            this.linSweepLeft.Click += new System.EventHandler(this.linSweepLeft_Click);
             // 
             // groupBox2
             // 
@@ -264,10 +277,66 @@
             this.groupBox2.Controls.Add(this.lin2Left);
             this.groupBox2.Location = new System.Drawing.Point(12, 80);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(243, 134);
+            this.groupBox2.Size = new System.Drawing.Size(220, 114);
             this.groupBox2.TabIndex = 21;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Manual Control";
+            // 
+            // rotLL
+            // 
+            this.rotLL.Location = new System.Drawing.Point(100, 23);
+            this.rotLL.Name = "rotLL";
+            this.rotLL.Size = new System.Drawing.Size(23, 23);
+            this.rotLL.TabIndex = 21;
+            this.rotLL.Text = "{";
+            this.rotLL.UseVisualStyleBackColor = true;
+            this.rotLL.Click += new System.EventHandler(this.rotLL_Click);
+            // 
+            // lin1LL
+            // 
+            this.lin1LL.Location = new System.Drawing.Point(100, 52);
+            this.lin1LL.Name = "lin1LL";
+            this.lin1LL.Size = new System.Drawing.Size(23, 23);
+            this.lin1LL.TabIndex = 22;
+            this.lin1LL.Text = "{";
+            this.lin1LL.UseVisualStyleBackColor = true;
+            // 
+            // lin2LL
+            // 
+            this.lin2LL.Location = new System.Drawing.Point(100, 81);
+            this.lin2LL.Name = "lin2LL";
+            this.lin2LL.Size = new System.Drawing.Size(23, 23);
+            this.lin2LL.TabIndex = 23;
+            this.lin2LL.Text = "{";
+            this.lin2LL.UseVisualStyleBackColor = true;
+            // 
+            // rotRR
+            // 
+            this.rotRR.Location = new System.Drawing.Point(187, 23);
+            this.rotRR.Name = "rotRR";
+            this.rotRR.Size = new System.Drawing.Size(23, 23);
+            this.rotRR.TabIndex = 18;
+            this.rotRR.Text = "}";
+            this.rotRR.UseVisualStyleBackColor = true;
+            this.rotRR.Click += new System.EventHandler(this.rotRR_Click);
+            // 
+            // lin2RR
+            // 
+            this.lin2RR.Location = new System.Drawing.Point(187, 81);
+            this.lin2RR.Name = "lin2RR";
+            this.lin2RR.Size = new System.Drawing.Size(23, 23);
+            this.lin2RR.TabIndex = 20;
+            this.lin2RR.Text = "}";
+            this.lin2RR.UseVisualStyleBackColor = true;
+            // 
+            // lin1RR
+            // 
+            this.lin1RR.Location = new System.Drawing.Point(187, 52);
+            this.lin1RR.Name = "lin1RR";
+            this.lin1RR.Size = new System.Drawing.Size(23, 23);
+            this.lin1RR.TabIndex = 19;
+            this.lin1RR.Text = "}";
+            this.lin1RR.UseVisualStyleBackColor = true;
             // 
             // Accelerometer
             // 
@@ -279,7 +348,7 @@
             this.Accelerometer.Controls.Add(this.label8);
             this.Accelerometer.Controls.Add(this.label7);
             this.Accelerometer.Controls.Add(this.label6);
-            this.Accelerometer.Location = new System.Drawing.Point(481, 12);
+            this.Accelerometer.Location = new System.Drawing.Point(379, 12);
             this.Accelerometer.Name = "Accelerometer";
             this.Accelerometer.Size = new System.Drawing.Size(114, 135);
             this.Accelerometer.TabIndex = 22;
@@ -350,71 +419,90 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Angle";
             // 
-            // rotRR
+            // linSweepRight
             // 
-            this.rotRR.Location = new System.Drawing.Point(187, 23);
-            this.rotRR.Name = "rotRR";
-            this.rotRR.Size = new System.Drawing.Size(23, 23);
-            this.rotRR.TabIndex = 18;
-            this.rotRR.Text = "}";
-            this.rotRR.UseVisualStyleBackColor = true;
+            this.linSweepRight.Location = new System.Drawing.Point(159, 48);
+            this.linSweepRight.Name = "linSweepRight";
+            this.linSweepRight.Size = new System.Drawing.Size(23, 23);
+            this.linSweepRight.TabIndex = 23;
+            this.linSweepRight.Text = ">";
+            this.linSweepRight.UseVisualStyleBackColor = true;
+            this.linSweepRight.Click += new System.EventHandler(this.linSweepRight_Click);
             // 
-            // lin2RR
+            // rotStepRight
             // 
-            this.lin2RR.Location = new System.Drawing.Point(187, 81);
-            this.lin2RR.Name = "lin2RR";
-            this.lin2RR.Size = new System.Drawing.Size(23, 23);
-            this.lin2RR.TabIndex = 20;
-            this.lin2RR.Text = "}";
-            this.lin2RR.UseVisualStyleBackColor = true;
+            this.rotStepRight.Location = new System.Drawing.Point(159, 19);
+            this.rotStepRight.Name = "rotStepRight";
+            this.rotStepRight.Size = new System.Drawing.Size(23, 23);
+            this.rotStepRight.TabIndex = 26;
+            this.rotStepRight.Text = ">";
+            this.rotStepRight.UseVisualStyleBackColor = true;
+            this.rotStepRight.Click += new System.EventHandler(this.rotStepRight_Click);
             // 
-            // lin1RR
+            // rotHome
             // 
-            this.lin1RR.Location = new System.Drawing.Point(187, 52);
-            this.lin1RR.Name = "lin1RR";
-            this.lin1RR.Size = new System.Drawing.Size(23, 23);
-            this.lin1RR.TabIndex = 19;
-            this.lin1RR.Text = "}";
-            this.lin1RR.UseVisualStyleBackColor = true;
+            this.rotHome.Location = new System.Drawing.Point(110, 19);
+            this.rotHome.Name = "rotHome";
+            this.rotHome.Size = new System.Drawing.Size(43, 23);
+            this.rotHome.TabIndex = 25;
+            this.rotHome.Text = "Home";
+            this.rotHome.UseVisualStyleBackColor = true;
+            this.rotHome.Click += new System.EventHandler(this.rotHome_Click);
             // 
-            // rotLL
+            // rotStepLeft
             // 
-            this.rotLL.Location = new System.Drawing.Point(100, 23);
-            this.rotLL.Name = "rotLL";
-            this.rotLL.Size = new System.Drawing.Size(23, 23);
-            this.rotLL.TabIndex = 21;
-            this.rotLL.Text = "{";
-            this.rotLL.UseVisualStyleBackColor = true;
-            this.rotLL.Click += new System.EventHandler(this.rotLL_Click);
+            this.rotStepLeft.Location = new System.Drawing.Point(81, 19);
+            this.rotStepLeft.Name = "rotStepLeft";
+            this.rotStepLeft.Size = new System.Drawing.Size(23, 23);
+            this.rotStepLeft.TabIndex = 24;
+            this.rotStepLeft.Text = "<";
+            this.rotStepLeft.UseVisualStyleBackColor = true;
+            this.rotStepLeft.Click += new System.EventHandler(this.rotStepLeft_Click);
             // 
-            // lin1LL
+            // label5
             // 
-            this.lin1LL.Location = new System.Drawing.Point(100, 52);
-            this.lin1LL.Name = "lin1LL";
-            this.lin1LL.Size = new System.Drawing.Size(23, 23);
-            this.lin1LL.TabIndex = 22;
-            this.lin1LL.Text = "{";
-            this.lin1LL.UseVisualStyleBackColor = true;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(7, 24);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 13);
+            this.label5.TabIndex = 27;
+            this.label5.Text = "Rotatie";
             // 
-            // lin2LL
+            // groupBox3
             // 
-            this.lin2LL.Location = new System.Drawing.Point(100, 81);
-            this.lin2LL.Name = "lin2LL";
-            this.lin2LL.Size = new System.Drawing.Size(23, 23);
-            this.lin2LL.TabIndex = 23;
-            this.lin2LL.Text = "{";
-            this.lin2LL.UseVisualStyleBackColor = true;
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.linSweepLeft);
+            this.groupBox3.Controls.Add(this.rotStepRight);
+            this.groupBox3.Controls.Add(this.linHome);
+            this.groupBox3.Controls.Add(this.rotHome);
+            this.groupBox3.Controls.Add(this.linSweepRight);
+            this.groupBox3.Controls.Add(this.rotStepLeft);
+            this.groupBox3.Location = new System.Drawing.Point(12, 200);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(220, 82);
+            this.groupBox3.TabIndex = 28;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Functies";
+            // 
+            // getSamples
+            // 
+            this.getSamples.Location = new System.Drawing.Point(6, 179);
+            this.getSamples.Name = "getSamples";
+            this.getSamples.Size = new System.Drawing.Size(123, 23);
+            this.getSamples.TabIndex = 9;
+            this.getSamples.Text = "Scan";
+            this.getSamples.UseVisualStyleBackColor = true;
+            this.getSamples.Click += new System.EventHandler(this.getSamples_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(607, 512);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.Accelerometer);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cboPorts);
             this.Controls.Add(this.btnDisconnect);
@@ -428,8 +516,9 @@
             this.groupBox2.PerformLayout();
             this.Accelerometer.ResumeLayout(false);
             this.Accelerometer.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -452,8 +541,8 @@
         private System.Windows.Forms.Button lin2Right;
         private System.Windows.Forms.Button lin2Left;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button linHome;
+        private System.Windows.Forms.Button linSweepLeft;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox Accelerometer;
         private System.Windows.Forms.TextBox boxForceZ;
@@ -470,6 +559,13 @@
         private System.Windows.Forms.Button rotRR;
         private System.Windows.Forms.Button lin2RR;
         private System.Windows.Forms.Button lin1RR;
+        private System.Windows.Forms.Button linSweepRight;
+        private System.Windows.Forms.Button rotStepRight;
+        private System.Windows.Forms.Button rotHome;
+        private System.Windows.Forms.Button rotStepLeft;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button getSamples;
     }
 }
 

@@ -17,6 +17,7 @@ namespace CT_test_app
 
         Accelerometer accel;
         LinearArduino linArduino;
+        RotatieArduino rotArduino;
 
         private Timer mainTimer;
 
@@ -29,6 +30,7 @@ namespace CT_test_app
 
             accel = new Accelerometer(serialPort1);
             linArduino = new LinearArduino(serialPort1, 9);
+            rotArduino = new RotatieArduino(serialPort1, 8);
         }
 
         private void mainLoop(object sender, EventArgs e)
@@ -59,16 +61,8 @@ namespace CT_test_app
             }
             else if (result[0] == "acc")
             {
-                //int x = Convert.ToInt32(result[1]);
                 accel.InsertData(result[1], result[2], result[3]);
-                //Console.WriteLine(accel.angle);
-
-                //Console.WriteLine("x: " + accel.forceX.ToString() + " y: " + accel.forceY.ToString() + " z: " + accel.forceZ.ToString());
-
-                
             }
-            //Console.WriteLine(result[0]) ;
-            
 
             //Console.Write(incommingString);
 
@@ -184,16 +178,59 @@ namespace CT_test_app
             }
         }
 
-        private void rotLeft_Click(object sender, EventArgs e)
+        private void linHome_Click(object sender, EventArgs e)
         {
+            linArduino.GoHome();
+        }
 
+        private void rotHome_Click(object sender, EventArgs e)
+        {
+            rotArduino.goHome();
         }
 
         private void rotLL_Click(object sender, EventArgs e)
         {
-            linArduino.blinkled(500);
+            rotArduino.turnLeft(1000);
         }
 
+        private void rotLeft_Click(object sender, EventArgs e)
+        {
+            rotArduino.turnLeft(100);
+        }
 
+        private void rotRight_Click(object sender, EventArgs e)
+        {
+            rotArduino.turnRight(100);
+        }
+
+        private void rotRR_Click(object sender, EventArgs e)
+        {
+            rotArduino.turnRight(1000);
+        }
+
+        private void getSamples_Click(object sender, EventArgs e)
+        {
+            serialPort1.WriteLine("1,10,10000");
+        }
+
+        private void linSweepLeft_Click(object sender, EventArgs e)
+        {
+            linArduino.SweepLeft();
+        }
+
+        private void linSweepRight_Click(object sender, EventArgs e)
+        {
+            linArduino.SweepRight();
+        }
+
+        private void rotStepLeft_Click(object sender, EventArgs e)
+        {
+            rotArduino.StepLeft();
+        }
+
+        private void rotStepRight_Click(object sender, EventArgs e)
+        {
+            rotArduino.StepRight();
+        }
     }
 }

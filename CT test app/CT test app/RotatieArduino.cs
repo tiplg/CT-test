@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace CT_test_app
 {
-    class LinearArduino
+    class RotatieArduino
     {
         SerialPort serialport1;
         int adress { get; set; }
-        public LinearArduino(SerialPort serialport1, int adress)
+
+        public RotatieArduino(SerialPort serialport1, int adress)
         {
             this.serialport1 = serialport1;
             this.adress = adress;
@@ -22,20 +23,31 @@ namespace CT_test_app
             serialport1.WriteLine(adress + ",2," + time.ToString());
         }
 
-        public void GoHome()
+        public void goHome()
         {
             serialport1.WriteLine(adress + ",20,0");
         }
 
-        public void SweepLeft()
+        public void turnLeft(int steps)
+        {
+            serialport1.WriteLine(adress + ",10," + steps);
+        }
+
+        public void turnRight(int steps)
+        {
+            serialport1.WriteLine(adress + ",11," + steps);
+        }
+
+        public void StepLeft()
         {
             serialport1.WriteLine(adress + ",21,0");
         }
 
-        public void SweepRight()
+        public void StepRight()
         {
             serialport1.WriteLine(adress + ",22,0");
         }
+
 
     }
 }
