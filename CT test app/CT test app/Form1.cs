@@ -64,7 +64,7 @@ namespace CT_test_app
                 accel.InsertData(result[1], result[2], result[3]);
             }
 
-            //Console.Write(incommingString);
+            Console.Write(incommingString);
 
         }
 
@@ -210,17 +210,20 @@ namespace CT_test_app
 
         private void getSamples_Click(object sender, EventArgs e)
         {
-            serialPort1.WriteLine("1,10,10000");
+            serialPort1.WriteLine("1,10,300");
         }
 
         private void linSweepLeft_Click(object sender, EventArgs e)
         {
-            linArduino.SweepLeft();
+            //linArduino.SweepLeft();
+            linArduino.SweepLeft((2000 * 16));
         }
 
         private void linSweepRight_Click(object sender, EventArgs e)
         {
-            linArduino.SweepRight();
+            //linArduino.SweepRight();
+            linArduino.SweepRight((2000 * 16));
+
         }
 
         private void rotStepLeft_Click(object sender, EventArgs e)
@@ -231,6 +234,51 @@ namespace CT_test_app
         private void rotStepRight_Click(object sender, EventArgs e)
         {
             rotArduino.StepRight();
+        }
+
+        private void linLL_Click(object sender, EventArgs e)
+        {
+            linArduino.SweepLeft(1000);
+        }
+
+        private void linLeft_Click(object sender, EventArgs e)
+        {
+            linArduino.SweepLeft(100);
+        }
+
+        private void linRight_Click(object sender, EventArgs e)
+        {
+            linArduino.SweepRight(100);
+        }
+
+        private void linRR_Click(object sender, EventArgs e)
+        {
+            linArduino.SweepRight(1000);
+        }
+
+        private void lin1LL_Click(object sender, EventArgs e)
+        {
+            linArduino.TurnLeft(false, 1000);
+        }
+
+        private void lin1Left_Click(object sender, EventArgs e)
+        {
+            linArduino.TurnLeft(false, 100);
+        }
+
+        private void lin1Right_Click(object sender, EventArgs e)
+        {
+            linArduino.TurnRight(false, 100);
+        }
+
+        private void lin1RR_Click(object sender, EventArgs e)
+        {
+            linArduino.TurnRight(false, 1000);
+        }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            txtSensor.Clear();
         }
     }
 }

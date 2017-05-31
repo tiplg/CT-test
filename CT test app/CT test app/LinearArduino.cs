@@ -37,5 +37,46 @@ namespace CT_test_app
             serialport1.WriteLine(adress + ",22,0");
         }
 
+        public void SweepLeft(int steps)
+        {
+            serialport1.WriteLine(adress + ",14," + steps);
+        }
+
+        public void SweepRight(int steps)
+        {
+            serialport1.WriteLine(adress + ",15," + steps);
+        }
+
+        public void TurnLeft(bool side, int steps)
+        {
+            int command;
+            if (side)
+            {
+                command = 10;
+            }
+            else
+            {
+                command = 12;
+            }
+
+            serialport1.WriteLine(adress + "," + command + "," + steps);
+
+        }
+
+        public void TurnRight(bool side, int steps)
+        {
+            int command;
+            if (side)
+            {
+                command = 11;
+            }
+            else
+            {
+                command = 13;
+            }
+
+            serialport1.WriteLine(adress + "," + command + "," + steps);
+        }
+
     }
 }

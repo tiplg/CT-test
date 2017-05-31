@@ -39,6 +39,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtSensor = new System.Windows.Forms.RichTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.getSamples = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.lin1Right = new System.Windows.Forms.Button();
             this.lin1Left = new System.Windows.Forms.Button();
@@ -70,7 +71,12 @@
             this.rotStepLeft = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.getSamples = new System.Windows.Forms.Button();
+            this.linLL = new System.Windows.Forms.Button();
+            this.linRR = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.linRight = new System.Windows.Forms.Button();
+            this.linLeft = new System.Windows.Forms.Button();
+            this.ClearButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.Accelerometer.SuspendLayout();
@@ -166,14 +172,25 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.ClearButton);
             this.groupBox1.Controls.Add(this.getSamples);
             this.groupBox1.Controls.Add(this.txtSensor);
             this.groupBox1.Location = new System.Drawing.Point(238, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(135, 211);
+            this.groupBox1.Size = new System.Drawing.Size(135, 236);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Light Sensor";
+            // 
+            // getSamples
+            // 
+            this.getSamples.Location = new System.Drawing.Point(6, 179);
+            this.getSamples.Name = "getSamples";
+            this.getSamples.Size = new System.Drawing.Size(123, 23);
+            this.getSamples.TabIndex = 9;
+            this.getSamples.Text = "Scan";
+            this.getSamples.UseVisualStyleBackColor = true;
+            this.getSamples.Click += new System.EventHandler(this.getSamples_Click);
             // 
             // label2
             // 
@@ -192,6 +209,7 @@
             this.lin1Right.TabIndex = 12;
             this.lin1Right.Text = ">";
             this.lin1Right.UseVisualStyleBackColor = true;
+            this.lin1Right.Click += new System.EventHandler(this.lin1Right_Click);
             // 
             // lin1Left
             // 
@@ -201,6 +219,7 @@
             this.lin1Left.TabIndex = 10;
             this.lin1Left.Text = "<";
             this.lin1Left.UseVisualStyleBackColor = true;
+            this.lin1Left.Click += new System.EventHandler(this.lin1Left_Click);
             // 
             // label3
             // 
@@ -260,6 +279,11 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.linLL);
+            this.groupBox2.Controls.Add(this.linRR);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.linRight);
+            this.groupBox2.Controls.Add(this.linLeft);
             this.groupBox2.Controls.Add(this.rotLL);
             this.groupBox2.Controls.Add(this.lin1LL);
             this.groupBox2.Controls.Add(this.lin2LL);
@@ -277,7 +301,7 @@
             this.groupBox2.Controls.Add(this.lin2Left);
             this.groupBox2.Location = new System.Drawing.Point(12, 80);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(220, 114);
+            this.groupBox2.Size = new System.Drawing.Size(220, 143);
             this.groupBox2.TabIndex = 21;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Manual Control";
@@ -300,6 +324,7 @@
             this.lin1LL.TabIndex = 22;
             this.lin1LL.Text = "{";
             this.lin1LL.UseVisualStyleBackColor = true;
+            this.lin1LL.Click += new System.EventHandler(this.lin1LL_Click);
             // 
             // lin2LL
             // 
@@ -337,6 +362,7 @@
             this.lin1RR.TabIndex = 19;
             this.lin1RR.Text = "}";
             this.lin1RR.UseVisualStyleBackColor = true;
+            this.lin1RR.Click += new System.EventHandler(this.lin1RR_Click);
             // 
             // Accelerometer
             // 
@@ -478,22 +504,71 @@
             this.groupBox3.Controls.Add(this.rotHome);
             this.groupBox3.Controls.Add(this.linSweepRight);
             this.groupBox3.Controls.Add(this.rotStepLeft);
-            this.groupBox3.Location = new System.Drawing.Point(12, 200);
+            this.groupBox3.Location = new System.Drawing.Point(12, 242);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(220, 82);
             this.groupBox3.TabIndex = 28;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Functies";
             // 
-            // getSamples
+            // linLL
             // 
-            this.getSamples.Location = new System.Drawing.Point(6, 179);
-            this.getSamples.Name = "getSamples";
-            this.getSamples.Size = new System.Drawing.Size(123, 23);
-            this.getSamples.TabIndex = 9;
-            this.getSamples.Text = "Scan";
-            this.getSamples.UseVisualStyleBackColor = true;
-            this.getSamples.Click += new System.EventHandler(this.getSamples_Click);
+            this.linLL.Location = new System.Drawing.Point(101, 111);
+            this.linLL.Name = "linLL";
+            this.linLL.Size = new System.Drawing.Size(23, 23);
+            this.linLL.TabIndex = 28;
+            this.linLL.Text = "{";
+            this.linLL.UseVisualStyleBackColor = true;
+            this.linLL.Click += new System.EventHandler(this.linLL_Click);
+            // 
+            // linRR
+            // 
+            this.linRR.Location = new System.Drawing.Point(188, 111);
+            this.linRR.Name = "linRR";
+            this.linRR.Size = new System.Drawing.Size(23, 23);
+            this.linRR.TabIndex = 27;
+            this.linRR.Text = "}";
+            this.linRR.UseVisualStyleBackColor = true;
+            this.linRR.Click += new System.EventHandler(this.linRR_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(7, 116);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(65, 13);
+            this.label10.TabIndex = 26;
+            this.label10.Text = "Linear beide";
+            // 
+            // linRight
+            // 
+            this.linRight.Location = new System.Drawing.Point(159, 111);
+            this.linRight.Name = "linRight";
+            this.linRight.Size = new System.Drawing.Size(23, 23);
+            this.linRight.TabIndex = 25;
+            this.linRight.Text = ">";
+            this.linRight.UseVisualStyleBackColor = true;
+            this.linRight.Click += new System.EventHandler(this.linRight_Click);
+            // 
+            // linLeft
+            // 
+            this.linLeft.Location = new System.Drawing.Point(130, 111);
+            this.linLeft.Name = "linLeft";
+            this.linLeft.Size = new System.Drawing.Size(23, 23);
+            this.linLeft.TabIndex = 24;
+            this.linLeft.Text = "<";
+            this.linLeft.UseVisualStyleBackColor = true;
+            this.linLeft.Click += new System.EventHandler(this.linLeft_Click);
+            // 
+            // ClearButton
+            // 
+            this.ClearButton.Location = new System.Drawing.Point(6, 208);
+            this.ClearButton.Name = "ClearButton";
+            this.ClearButton.Size = new System.Drawing.Size(123, 23);
+            this.ClearButton.TabIndex = 29;
+            this.ClearButton.Text = "Clear";
+            this.ClearButton.UseVisualStyleBackColor = true;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // Form1
             // 
@@ -566,6 +641,12 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button getSamples;
+        private System.Windows.Forms.Button linLL;
+        private System.Windows.Forms.Button linRR;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button linRight;
+        private System.Windows.Forms.Button linLeft;
+        private System.Windows.Forms.Button ClearButton;
     }
 }
 
