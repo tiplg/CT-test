@@ -18,18 +18,20 @@ namespace CT_test_app
         Accelerometer accel;
         LinearArduino linArduino;
         RotatieArduino rotArduino;
+        Scan currentScan;
 
-        private Timer mainTimer;
-
-        int rotatie = 0;
+        Timer mainTimer;
+        Timer homeTimer;
+        Timer rotTimer;
+        Timer linTimer;
 
         public Form1()
         {
             InitializeComponent();
-            InitTimer();
+            InitTimers();
 
             accel = new Accelerometer(serialPort1);
-            linArduino = new LinearArduino(serialPort1, 9);
+            linArduino = new LinearArduino(serialPort1, 9, 16, 15.0);
             rotArduino = new RotatieArduino(serialPort1, 8);
         }
 
@@ -40,12 +42,36 @@ namespace CT_test_app
             updateControls();
         }
 
-        public void InitTimer()
+        private void rotate(object sender, EventArgs e)
+        {
+            rotTimer.Stop();
+            Console.WriteLine("rotate");
+            linTimer.Start();
+        }
+
+        private void sweep(object sender, EventArgs e)
+        {
+            linTimer.Stop();
+            Console.WriteLine("sweep");
+            rotTimer.Start();
+        }
+
+
+        public void InitTimers()
         {
             mainTimer = new Timer();
             mainTimer.Tick += new EventHandler(mainLoop);
             mainTimer.Interval = 100;
             mainTimer.Start();
+
+            homeTimer = new Timer();
+
+
+            rotTimer = new Timer();
+            rotTimer.Tick += new EventHandler(rotate);
+
+            linTimer = new Timer();
+            linTimer.Tick += new EventHandler(sweep);
         }
 
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -58,6 +84,10 @@ namespace CT_test_app
             if(result[0] == "lux")
             {
                 SetText(result[1]);
+            }
+            else if (result[0] == "line")
+            {
+                // get line to scan object
             }
             else if (result[0] == "acc")
             {
@@ -72,6 +102,7 @@ namespace CT_test_app
         {
             if (serialPort1.IsOpen)
             {
+                /*
                 if (rotatie != 0)
                 {
                     int adress = 2;
@@ -79,8 +110,7 @@ namespace CT_test_app
                     serialPort1.WriteLine(adress + "," + command + "," + "100");
                     //Console.WriteLine(adress + "," + command + "," + rotatie.ToString());
                 }
-                
-                //
+                */
             }
         }
 
@@ -90,6 +120,8 @@ namespace CT_test_app
             boxForceX.Text = accel.forceX.ToString("0.00");
             boxForceY.Text = accel.forceY.ToString("0.00");
             boxForceZ.Text = accel.forceZ.ToString("0.00");
+
+            boxLocation.Text = linArduino.GetLocation().ToString();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -99,7 +131,7 @@ namespace CT_test_app
             btnDisconnect.Enabled = false;
         }
 
-        private void btnScan_Click(object sender, EventArgs e)
+        private void btnScanPorts_Click(object sender, EventArgs e)
         {
             cboPorts.Items.Clear();
             string[] ports = SerialPort.GetPortNames();
@@ -111,7 +143,7 @@ namespace CT_test_app
             btnConnect.Enabled = false;
             btnDisconnect.Enabled = true;
             cboPorts.Enabled = false;
-            btnScan.Enabled = false;
+            btnScanPorts.Enabled = false;
 
             try
             {
@@ -133,7 +165,7 @@ namespace CT_test_app
             btnConnect.Enabled = true;
             btnDisconnect.Enabled = false;
             cboPorts.Enabled = true;
-            btnScan.Enabled = true;
+            btnScanPorts.Enabled = true;
 
             try
             {
@@ -143,26 +175,6 @@ namespace CT_test_app
             {
                 MessageBox.Show(ex.Message, "Not so helpful error message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void rotLeft_MouseDown(object sender, MouseEventArgs e)
-        {
-            rotatie = 10;
-        }
-
-        private void rotLeft_MouseUp(object sender, MouseEventArgs e)
-        {
-            rotatie = 0;
-        }
-
-        private void rotRight_MouseDown(object sender, MouseEventArgs e)
-        {
-            rotatie = 11;
-        }
-
-        private void rotRight_MouseUp(object sender, MouseEventArgs e)
-        {
-            rotatie = 0;
         }
 
         private void SetText(string text)
@@ -216,13 +228,15 @@ namespace CT_test_app
         private void linSweepLeft_Click(object sender, EventArgs e)
         {
             //linArduino.SweepLeft();
-            linArduino.SweepLeft((2000 * 16));
+            //linArduino.SweepLeft((2000 * 16));
+            linArduino.SweepLeft(8.0);
         }
 
         private void linSweepRight_Click(object sender, EventArgs e)
         {
             //linArduino.SweepRight();
-            linArduino.SweepRight((2000 * 16));
+            //linArduino.SweepRight((2000 * 16));
+            linArduino.SweepRight(8.0);
 
         }
 
@@ -279,6 +293,20 @@ namespace CT_test_app
         private void ClearButton_Click(object sender, EventArgs e)
         {
             txtSensor.Clear();
+        }
+
+        private void btnScan_Click(object sender, EventArgs e)
+        {
+            currentScan = new Scan(100, 100, 8.0);
+
+            currentScan.rotTime = 2000;
+            currentScan.sweepTime = 10000;
+
+            rotTimer.Interval = currentScan.sweepTime;
+            linTimer.Interval = currentScan.rotTime;
+
+            linTimer.Start();
+            // go to right pos from home
         }
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.btnScan = new System.Windows.Forms.Button();
+            this.btnScanPorts = new System.Windows.Forms.Button();
             this.btnConnect = new System.Windows.Forms.Button();
             this.btnDisconnect = new System.Windows.Forms.Button();
             this.cboPorts = new System.Windows.Forms.ComboBox();
@@ -39,6 +39,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtSensor = new System.Windows.Forms.RichTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ClearButton = new System.Windows.Forms.Button();
             this.getSamples = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.lin1Right = new System.Windows.Forms.Button();
@@ -50,6 +51,11 @@
             this.linHome = new System.Windows.Forms.Button();
             this.linSweepLeft = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.linLL = new System.Windows.Forms.Button();
+            this.linRR = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.linRight = new System.Windows.Forms.Button();
+            this.linLeft = new System.Windows.Forms.Button();
             this.rotLL = new System.Windows.Forms.Button();
             this.lin1LL = new System.Windows.Forms.Button();
             this.lin2LL = new System.Windows.Forms.Button();
@@ -71,27 +77,28 @@
             this.rotStepLeft = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.linLL = new System.Windows.Forms.Button();
-            this.linRR = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.linRight = new System.Windows.Forms.Button();
-            this.linLeft = new System.Windows.Forms.Button();
-            this.ClearButton = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.boxLocation = new System.Windows.Forms.TextBox();
+            this.boxRange = new System.Windows.Forms.TextBox();
+            this.btnScan = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.Accelerometer.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnScan
+            // btnScanPorts
             // 
-            this.btnScan.Location = new System.Drawing.Point(93, 10);
-            this.btnScan.Name = "btnScan";
-            this.btnScan.Size = new System.Drawing.Size(75, 23);
-            this.btnScan.TabIndex = 0;
-            this.btnScan.Text = "Scan Ports";
-            this.btnScan.UseVisualStyleBackColor = true;
-            this.btnScan.Click += new System.EventHandler(this.btnScan_Click);
+            this.btnScanPorts.Location = new System.Drawing.Point(93, 10);
+            this.btnScanPorts.Name = "btnScanPorts";
+            this.btnScanPorts.Size = new System.Drawing.Size(75, 23);
+            this.btnScanPorts.TabIndex = 0;
+            this.btnScanPorts.Text = "Scan Ports";
+            this.btnScanPorts.UseVisualStyleBackColor = true;
+            this.btnScanPorts.Click += new System.EventHandler(this.btnScanPorts_Click);
             // 
             // btnConnect
             // 
@@ -136,8 +143,6 @@
             this.rotLeft.Text = "<";
             this.rotLeft.UseVisualStyleBackColor = true;
             this.rotLeft.Click += new System.EventHandler(this.rotLeft_Click);
-            this.rotLeft.MouseDown += new System.Windows.Forms.MouseEventHandler(this.rotLeft_MouseDown);
-            this.rotLeft.MouseUp += new System.Windows.Forms.MouseEventHandler(this.rotLeft_MouseUp);
             // 
             // rotRight
             // 
@@ -148,8 +153,6 @@
             this.rotRight.Text = ">";
             this.rotRight.UseVisualStyleBackColor = true;
             this.rotRight.Click += new System.EventHandler(this.rotRight_Click);
-            this.rotRight.MouseDown += new System.Windows.Forms.MouseEventHandler(this.rotRight_MouseDown);
-            this.rotRight.MouseUp += new System.Windows.Forms.MouseEventHandler(this.rotRight_MouseUp);
             // 
             // label1
             // 
@@ -182,13 +185,23 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Light Sensor";
             // 
+            // ClearButton
+            // 
+            this.ClearButton.Location = new System.Drawing.Point(6, 208);
+            this.ClearButton.Name = "ClearButton";
+            this.ClearButton.Size = new System.Drawing.Size(123, 23);
+            this.ClearButton.TabIndex = 29;
+            this.ClearButton.Text = "Clear";
+            this.ClearButton.UseVisualStyleBackColor = true;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            // 
             // getSamples
             // 
             this.getSamples.Location = new System.Drawing.Point(6, 179);
             this.getSamples.Name = "getSamples";
             this.getSamples.Size = new System.Drawing.Size(123, 23);
             this.getSamples.TabIndex = 9;
-            this.getSamples.Text = "Scan";
+            this.getSamples.Text = "Take Samples";
             this.getSamples.UseVisualStyleBackColor = true;
             this.getSamples.Click += new System.EventHandler(this.getSamples_Click);
             // 
@@ -305,6 +318,55 @@
             this.groupBox2.TabIndex = 21;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Manual Control";
+            // 
+            // linLL
+            // 
+            this.linLL.Location = new System.Drawing.Point(101, 111);
+            this.linLL.Name = "linLL";
+            this.linLL.Size = new System.Drawing.Size(23, 23);
+            this.linLL.TabIndex = 28;
+            this.linLL.Text = "{";
+            this.linLL.UseVisualStyleBackColor = true;
+            this.linLL.Click += new System.EventHandler(this.linLL_Click);
+            // 
+            // linRR
+            // 
+            this.linRR.Location = new System.Drawing.Point(188, 111);
+            this.linRR.Name = "linRR";
+            this.linRR.Size = new System.Drawing.Size(23, 23);
+            this.linRR.TabIndex = 27;
+            this.linRR.Text = "}";
+            this.linRR.UseVisualStyleBackColor = true;
+            this.linRR.Click += new System.EventHandler(this.linRR_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(7, 116);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(65, 13);
+            this.label10.TabIndex = 26;
+            this.label10.Text = "Linear beide";
+            // 
+            // linRight
+            // 
+            this.linRight.Location = new System.Drawing.Point(159, 111);
+            this.linRight.Name = "linRight";
+            this.linRight.Size = new System.Drawing.Size(23, 23);
+            this.linRight.TabIndex = 25;
+            this.linRight.Text = ">";
+            this.linRight.UseVisualStyleBackColor = true;
+            this.linRight.Click += new System.EventHandler(this.linRight_Click);
+            // 
+            // linLeft
+            // 
+            this.linLeft.Location = new System.Drawing.Point(130, 111);
+            this.linLeft.Name = "linLeft";
+            this.linLeft.Size = new System.Drawing.Size(23, 23);
+            this.linLeft.TabIndex = 24;
+            this.linLeft.Text = "<";
+            this.linLeft.UseVisualStyleBackColor = true;
+            this.linLeft.Click += new System.EventHandler(this.linLeft_Click);
             // 
             // rotLL
             // 
@@ -504,77 +566,75 @@
             this.groupBox3.Controls.Add(this.rotHome);
             this.groupBox3.Controls.Add(this.linSweepRight);
             this.groupBox3.Controls.Add(this.rotStepLeft);
-            this.groupBox3.Location = new System.Drawing.Point(12, 242);
+            this.groupBox3.Location = new System.Drawing.Point(12, 229);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(220, 82);
             this.groupBox3.TabIndex = 28;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Functies";
             // 
-            // linLL
+            // groupBox4
             // 
-            this.linLL.Location = new System.Drawing.Point(101, 111);
-            this.linLL.Name = "linLL";
-            this.linLL.Size = new System.Drawing.Size(23, 23);
-            this.linLL.TabIndex = 28;
-            this.linLL.Text = "{";
-            this.linLL.UseVisualStyleBackColor = true;
-            this.linLL.Click += new System.EventHandler(this.linLL_Click);
+            this.groupBox4.Controls.Add(this.label12);
+            this.groupBox4.Controls.Add(this.label11);
+            this.groupBox4.Controls.Add(this.boxLocation);
+            this.groupBox4.Controls.Add(this.boxRange);
+            this.groupBox4.Location = new System.Drawing.Point(379, 153);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(114, 76);
+            this.groupBox4.TabIndex = 29;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Scanner";
             // 
-            // linRR
+            // label12
             // 
-            this.linRR.Location = new System.Drawing.Point(188, 111);
-            this.linRR.Name = "linRR";
-            this.linRR.Size = new System.Drawing.Size(23, 23);
-            this.linRR.TabIndex = 27;
-            this.linRR.Text = "}";
-            this.linRR.UseVisualStyleBackColor = true;
-            this.linRR.Click += new System.EventHandler(this.linRR_Click);
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 48);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(48, 13);
+            this.label12.TabIndex = 3;
+            this.label12.Text = "Location";
             // 
-            // label10
+            // label11
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(7, 116);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(65, 13);
-            this.label10.TabIndex = 26;
-            this.label10.Text = "Linear beide";
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 22);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(39, 13);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "Range";
             // 
-            // linRight
+            // boxLocation
             // 
-            this.linRight.Location = new System.Drawing.Point(159, 111);
-            this.linRight.Name = "linRight";
-            this.linRight.Size = new System.Drawing.Size(23, 23);
-            this.linRight.TabIndex = 25;
-            this.linRight.Text = ">";
-            this.linRight.UseVisualStyleBackColor = true;
-            this.linRight.Click += new System.EventHandler(this.linRight_Click);
+            this.boxLocation.Location = new System.Drawing.Point(55, 45);
+            this.boxLocation.Name = "boxLocation";
+            this.boxLocation.Size = new System.Drawing.Size(39, 20);
+            this.boxLocation.TabIndex = 1;
             // 
-            // linLeft
+            // boxRange
             // 
-            this.linLeft.Location = new System.Drawing.Point(130, 111);
-            this.linLeft.Name = "linLeft";
-            this.linLeft.Size = new System.Drawing.Size(23, 23);
-            this.linLeft.TabIndex = 24;
-            this.linLeft.Text = "<";
-            this.linLeft.UseVisualStyleBackColor = true;
-            this.linLeft.Click += new System.EventHandler(this.linLeft_Click);
+            this.boxRange.Location = new System.Drawing.Point(55, 19);
+            this.boxRange.Name = "boxRange";
+            this.boxRange.Size = new System.Drawing.Size(39, 20);
+            this.boxRange.TabIndex = 0;
             // 
-            // ClearButton
+            // btnScan
             // 
-            this.ClearButton.Location = new System.Drawing.Point(6, 208);
-            this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Size = new System.Drawing.Size(123, 23);
-            this.ClearButton.TabIndex = 29;
-            this.ClearButton.Text = "Clear";
-            this.ClearButton.UseVisualStyleBackColor = true;
-            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            this.btnScan.Location = new System.Drawing.Point(294, 322);
+            this.btnScan.Name = "btnScan";
+            this.btnScan.Size = new System.Drawing.Size(143, 51);
+            this.btnScan.TabIndex = 30;
+            this.btnScan.Text = "Scan";
+            this.btnScan.UseVisualStyleBackColor = true;
+            this.btnScan.Click += new System.EventHandler(this.btnScan_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(607, 512);
+            this.ClientSize = new System.Drawing.Size(585, 465);
+            this.Controls.Add(this.btnScan);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.Accelerometer);
             this.Controls.Add(this.groupBox2);
@@ -582,7 +642,7 @@
             this.Controls.Add(this.cboPorts);
             this.Controls.Add(this.btnDisconnect);
             this.Controls.Add(this.btnConnect);
-            this.Controls.Add(this.btnScan);
+            this.Controls.Add(this.btnScanPorts);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -593,13 +653,15 @@
             this.Accelerometer.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnScan;
+        private System.Windows.Forms.Button btnScanPorts;
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.Button btnDisconnect;
         private System.Windows.Forms.ComboBox cboPorts;
@@ -647,6 +709,12 @@
         private System.Windows.Forms.Button linRight;
         private System.Windows.Forms.Button linLeft;
         private System.Windows.Forms.Button ClearButton;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox boxLocation;
+        private System.Windows.Forms.TextBox boxRange;
+        private System.Windows.Forms.Button btnScan;
     }
 }
 
