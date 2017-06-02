@@ -40,6 +40,11 @@ namespace CT_test_app
             location = 0;
         }
 
+        public void SetStepDelay(int stepDelay)
+        {
+            serialport1.Write(adress + ",3," + stepDelay);
+        }
+
         public void SweepLeft()
         {
             serialport1.WriteLine(adress + ",21,0");
@@ -53,29 +58,31 @@ namespace CT_test_app
         public void SweepLeft(int steps)
         {
             steps = checkOutOfRange(false, steps);
-            //serialport1.WriteLine(adress + ",14," + steps);
+            serialport1.WriteLine(adress + ",14," + steps);
         }
 
         public void SweepRight(int steps)
         {
             steps = checkOutOfRange(true, steps);
-            //serialport1.WriteLine(adress + ",15," + steps);
+            serialport1.WriteLine(adress + ",15," + steps);
         }
 
         public void SweepLeft(double cm)
         {
             int steps = Convert.ToInt32(200 * microstepping * (cm / 0.8));
+            Console.WriteLine("steps wanted: " + steps);
             steps = checkOutOfRange(false,steps);
-            Console.WriteLine(steps);
-            //serialport1.WriteLine(adress + ",14," + steps);
+            Console.WriteLine("steps send: " + steps);
+            serialport1.WriteLine(adress + ",14," + steps);
         }
 
         public void SweepRight(double cm)
         {
             int steps = Convert.ToInt32(200 * microstepping * (cm / 0.8));
+            Console.WriteLine("steps wanted: " + steps);
             steps = checkOutOfRange(true, steps);
-            Console.WriteLine(steps);
-            //serialport1.WriteLine(adress + ",15," + steps);
+            Console.WriteLine("steps send: " + steps);
+            serialport1.WriteLine(adress + ",15," + steps);
         }
 
         public void TurnLeft(bool side, int steps)

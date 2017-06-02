@@ -83,11 +83,14 @@
             this.boxLocation = new System.Windows.Forms.TextBox();
             this.boxRange = new System.Windows.Forms.TextBox();
             this.btnScan = new System.Windows.Forms.Button();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.btnSetDelay = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.Accelerometer.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnScanPorts
@@ -628,11 +631,45 @@
             this.btnScan.UseVisualStyleBackColor = true;
             this.btnScan.Click += new System.EventHandler(this.btnScan_Click);
             // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(400, 246);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(59, 20);
+            this.numericUpDown1.TabIndex = 31;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
+            // 
+            // btnSetDelay
+            // 
+            this.btnSetDelay.Location = new System.Drawing.Point(400, 273);
+            this.btnSetDelay.Name = "btnSetDelay";
+            this.btnSetDelay.Size = new System.Drawing.Size(59, 23);
+            this.btnSetDelay.TabIndex = 32;
+            this.btnSetDelay.Text = "Set Delay";
+            this.btnSetDelay.UseVisualStyleBackColor = true;
+            this.btnSetDelay.Click += new System.EventHandler(this.btnSetDelay_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(585, 465);
+            this.Controls.Add(this.btnSetDelay);
+            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.btnScan);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -655,6 +692,7 @@
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -715,6 +753,8 @@
         private System.Windows.Forms.TextBox boxLocation;
         private System.Windows.Forms.TextBox boxRange;
         private System.Windows.Forms.Button btnScan;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Button btnSetDelay;
     }
 }
 

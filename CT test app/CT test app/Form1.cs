@@ -25,13 +25,15 @@ namespace CT_test_app
         Timer rotTimer;
         Timer linTimer;
 
+        bool flip = true;
+
         public Form1()
         {
             InitializeComponent();
             InitTimers();
 
             accel = new Accelerometer(serialPort1);
-            linArduino = new LinearArduino(serialPort1, 9, 16, 15.0);
+            linArduino = new LinearArduino(serialPort1, 9, 16, 10.5);
             rotArduino = new RotatieArduino(serialPort1, 8);
         }
 
@@ -45,6 +47,8 @@ namespace CT_test_app
         private void rotate(object sender, EventArgs e)
         {
             rotTimer.Stop();
+            //
+            rotArduino.StepLeft();
             Console.WriteLine("rotate");
             linTimer.Start();
         }
@@ -52,8 +56,27 @@ namespace CT_test_app
         private void sweep(object sender, EventArgs e)
         {
             linTimer.Stop();
+            if (flip)
+            {
+                linArduino.SweepLeft(6.0);
+            }
+            else
+            {
+                linArduino.SweepRight(6.0);
+            }
+
+            flip = !flip;
+
             Console.WriteLine("sweep");
             rotTimer.Start();
+        }
+
+        private void homed(object sender, EventArgs e)
+        {
+            homeTimer.Stop();
+
+            Console.WriteLine("homed");
+            linTimer.Start();
         }
 
 
@@ -65,6 +88,8 @@ namespace CT_test_app
             mainTimer.Start();
 
             homeTimer = new Timer();
+            homeTimer.Tick += new EventHandler(homed);
+            homeTimer.Interval = 3000;
 
 
             rotTimer = new Timer();
@@ -228,15 +253,15 @@ namespace CT_test_app
         private void linSweepLeft_Click(object sender, EventArgs e)
         {
             //linArduino.SweepLeft();
-            //linArduino.SweepLeft((2000 * 16));
-            linArduino.SweepLeft(8.0);
+            //linArduino.SweepLeft(32000);
+            linArduino.SweepLeft(5.25);
         }
 
         private void linSweepRight_Click(object sender, EventArgs e)
         {
             //linArduino.SweepRight();
-            //linArduino.SweepRight((2000 * 16));
-            linArduino.SweepRight(8.0);
+            //linArduino.SweepRight(32000);
+            linArduino.SweepRight(5.25);
 
         }
 
@@ -299,14 +324,20 @@ namespace CT_test_app
         {
             currentScan = new Scan(100, 100, 8.0);
 
-            currentScan.rotTime = 2000;
-            currentScan.sweepTime = 10000;
+            currentScan.rotTime = 300;
+            currentScan.sweepTime = 1500;
 
             rotTimer.Interval = currentScan.sweepTime;
             linTimer.Interval = currentScan.rotTime;
 
-            linTimer.Start();
+            homeTimer.Start();
+            linArduino.SweepLeft(4.0);
             // go to right pos from home
+        }
+
+        private void btnSetDelay_Click(object sender, EventArgs e)
+        {
+            linArduino.SetStepDelay(Convert.ToInt32(numericUpDown1.Value));
         }
     }
 }
