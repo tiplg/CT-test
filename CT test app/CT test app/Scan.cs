@@ -17,11 +17,28 @@ namespace CT_test_app
         public int sweepTime { get; set; }
         public int rotTime { get; set; }
 
+        int currentLine;
+
         public Scan(int numSamplesPerLine, int numLinesPerScan, double scanDistance)
         {
             this.numSamplesPerLine = numSamplesPerLine;
             this.numLinesPerScan = numLinesPerScan;
             this.scanDistance = scanDistance;
+
+            currentLine = 0;
+        }
+
+        public bool Stepje()
+        {
+            if(++currentLine >= numLinesPerScan)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
         }
     }
 }

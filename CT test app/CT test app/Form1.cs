@@ -26,6 +26,7 @@ namespace CT_test_app
         Timer linTimer;
 
         bool flip = true;
+        bool atHome = false;
 
         public Form1()
         {
@@ -48,9 +49,12 @@ namespace CT_test_app
         {
             rotTimer.Stop();
             //
-            rotArduino.StepLeft();
-            Console.WriteLine("rotate");
-            linTimer.Start();
+            if (currentScan.Stepje())
+            {
+                rotArduino.StepLeft();
+                Console.WriteLine("rotate");
+                linTimer.Start();
+            }
         }
 
         private void sweep(object sender, EventArgs e)
@@ -73,10 +77,23 @@ namespace CT_test_app
 
         private void homed(object sender, EventArgs e)
         {
-            homeTimer.Stop();
 
             Console.WriteLine("homed");
-            linTimer.Start();
+
+            if (atHome)
+            {
+                homeTimer.Stop();
+                linTimer.Start();
+            }
+            else
+            {
+                homeTimer.Interval = 3000;
+                linArduino.SweepLeft(4.0);
+
+                atHome = true;
+            }
+
+
         }
 
 
@@ -254,14 +271,14 @@ namespace CT_test_app
         {
             //linArduino.SweepLeft();
             //linArduino.SweepLeft(32000);
-            linArduino.SweepLeft(5.25);
+            linArduino.SweepLeft(6.0);
         }
 
         private void linSweepRight_Click(object sender, EventArgs e)
         {
             //linArduino.SweepRight();
             //linArduino.SweepRight(32000);
-            linArduino.SweepRight(5.25);
+            linArduino.SweepRight(6.0);
 
         }
 
@@ -322,7 +339,7 @@ namespace CT_test_app
 
         private void btnScan_Click(object sender, EventArgs e)
         {
-            currentScan = new Scan(100, 100, 8.0);
+            currentScan = new Scan(50, 50, 6.0);
 
             currentScan.rotTime = 300;
             currentScan.sweepTime = 1500;
@@ -330,8 +347,11 @@ namespace CT_test_app
             rotTimer.Interval = currentScan.sweepTime;
             linTimer.Interval = currentScan.rotTime;
 
+            homeTimer.Interval = 10000;
+
             homeTimer.Start();
-            linArduino.SweepLeft(4.0);
+            linArduino.GoHome();
+            rotArduino.goHome();
             // go to right pos from home
         }
 
