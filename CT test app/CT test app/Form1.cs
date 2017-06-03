@@ -48,7 +48,7 @@ namespace CT_test_app
         {
             rotTimer.Stop();
             //
-            //rotArduino.StepLeft();
+            rotArduino.StepLeft();
             Console.WriteLine("rotate");
             linTimer.Start();
         }
@@ -58,11 +58,11 @@ namespace CT_test_app
             linTimer.Stop();
             if (flip)
             {
-                //linArduino.SweepLeft(6.0);
+                linArduino.SweepLeft(6.0);
             }
             else
             {
-               // linArduino.SweepRight(6.0);
+                linArduino.SweepRight(6.0);
             }
 
             flip = !flip;
@@ -322,7 +322,7 @@ namespace CT_test_app
 
         private void btnScan_Click(object sender, EventArgs e)
         {
-            currentScan = new Scan(linArduino, rotArduino, 100, 100, 8.0);
+            currentScan = new Scan(100, 100, 8.0);
 
             currentScan.rotTime = 300;
             currentScan.sweepTime = 1500;
@@ -331,8 +331,8 @@ namespace CT_test_app
             linTimer.Interval = currentScan.rotTime;
 
             homeTimer.Start();
-            //linArduino.SweepLeft(4.0);
-            // go to start pos from home
+            linArduino.SweepLeft(4.0);
+            // go to right pos from home
         }
 
         private void btnSetDelay_Click(object sender, EventArgs e)
