@@ -23,7 +23,7 @@ namespace CT_test_app
             serialport1.WriteLine(adress + ",2," + time.ToString());
         }
 
-        public void goHome()
+        public void GoHome()
         {
             serialport1.WriteLine(adress + ",20,0");
         }

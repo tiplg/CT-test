@@ -36,6 +36,8 @@ namespace CT_test_app
             accel = new Accelerometer(serialPort1);
             linArduino = new LinearArduino(serialPort1, 9, 16, 10.5);
             rotArduino = new RotatieArduino(serialPort1, 8);
+
+            //currentScan = new Scan(linArduino, rotArduino, 10, 10, 6.0);
         }
 
         private void mainLoop(object sender, EventArgs e)
@@ -49,7 +51,7 @@ namespace CT_test_app
         {
             rotTimer.Stop();
             //
-            if (currentScan.Stepje())
+            if (true)
             {
                 rotArduino.StepLeft();
                 Console.WriteLine("rotate");
@@ -118,10 +120,12 @@ namespace CT_test_app
 
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            string[] result;
-            char[] sep = { ',', '\n',' '};
-            string incommingString = serialPort1.ReadLine();
-            result = incommingString.Split(sep);
+            while (serialPort1.BytesToRead > 1) {
+                string incommingString = serialPort1.ReadLine();
+                string[] result;
+                char[] sep = { ',','\n',' '};
+            
+                result = incommingString.Split(sep);
 
             if(result[0] == "lux")
             {
@@ -129,7 +133,8 @@ namespace CT_test_app
             }
             else if (result[0] == "line")
             {
-                // get line to scan object
+                    // get line to scan object
+                    currentScan.addLine(result.Skip(1).ToArray());
             }
             else if (result[0] == "acc")
             {
@@ -137,6 +142,8 @@ namespace CT_test_app
             }
 
             Console.Write(incommingString);
+            }
+
 
         }
 
@@ -239,7 +246,7 @@ namespace CT_test_app
 
         private void rotHome_Click(object sender, EventArgs e)
         {
-            rotArduino.goHome();
+            rotArduino.GoHome();
         }
 
         private void rotLL_Click(object sender, EventArgs e)
@@ -264,7 +271,7 @@ namespace CT_test_app
 
         private void getSamples_Click(object sender, EventArgs e)
         {
-            serialPort1.WriteLine("1,10,300");
+            serialPort1.WriteLine("1,10,10");
         }
 
         private void linSweepLeft_Click(object sender, EventArgs e)
@@ -339,25 +346,44 @@ namespace CT_test_app
 
         private void btnScan_Click(object sender, EventArgs e)
         {
-            currentScan = new Scan(50, 50, 6.0);
+            currentScan = new Scan(linArduino, rotArduino, 10, 10, 6.0);
 
-            currentScan.rotTime = 300;
-            currentScan.sweepTime = 1500;
+            currentScan.StartScan();
 
-            rotTimer.Interval = currentScan.sweepTime;
-            linTimer.Interval = currentScan.rotTime;
+            //currentScan.rotTime = 300;
+            //currentScan.sweepTime = 1500;
 
-            homeTimer.Interval = 10000;
+            //rotTimer.Interval = currentScan.sweepTime;
+            //linTimer.Interval = currentScan.rotTime;
 
-            homeTimer.Start();
-            linArduino.GoHome();
-            rotArduino.goHome();
+            //homeTimer.Interval = 10000;
+
+            //homeTimer.Start();
+            //linArduino.GoHome();
+            //rotArduino.goHome();
             // go to right pos from home
         }
 
         private void btnSetDelay_Click(object sender, EventArgs e)
         {
             linArduino.SetStepDelay(Convert.ToInt32(numericUpDown1.Value));
+        }
+
+        private void btnSetLightDelay_Click(object sender, EventArgs e)
+        {
+            serialPort1.WriteLine("1,3," + (numericUpDown2.Value * 1000).ToString());
+            //Console.WriteLine("1,3," + (numericUpDown2.Value * 1000).ToString());
+        }
+
+        private void btnSetIntergrationTime_Click(object sender, EventArgs e)
+        {
+            serialPort1.WriteLine("1,4," + (numericUpDown3.Value*1000).ToString());
+            //Console.WriteLine("1,4," + (numericUpDown3.Value * 1000).ToString());
+        }
+
+        private void btnGetLine_Click(object sender, EventArgs e)
+        {
+            serialPort1.WriteLine("1,11,10");
         }
     }
 }

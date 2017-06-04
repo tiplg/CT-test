@@ -70,18 +70,18 @@ namespace CT_test_app
         public void SweepLeft(double cm)
         {
             int steps = Convert.ToInt32(200 * microstepping * (cm / 0.8));
-            Console.WriteLine("steps wanted: " + steps);
+            //Console.WriteLine("steps wanted: " + steps);
             steps = checkOutOfRange(false,steps);
-            Console.WriteLine("steps send: " + steps);
+            //Console.WriteLine("steps send: " + steps);
             serialport1.WriteLine(adress + ",14," + steps);
         }
 
         public void SweepRight(double cm)
         {
             int steps = Convert.ToInt32(200 * microstepping * (cm / 0.8));
-            Console.WriteLine("steps wanted: " + steps);
+            //Console.WriteLine("steps wanted: " + steps);
             steps = checkOutOfRange(true, steps);
-            Console.WriteLine("steps send: " + steps);
+            //Console.WriteLine("steps send: " + steps);
             serialport1.WriteLine(adress + ",15," + steps);
         }
 

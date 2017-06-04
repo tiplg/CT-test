@@ -85,12 +85,22 @@
             this.btnScan = new System.Windows.Forms.Button();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.btnSetDelay = new System.Windows.Forms.Button();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.btnSetLightDelay = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.btnSetIntergrationTime = new System.Windows.Forms.Button();
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.btnGetLine = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.Accelerometer.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             this.SuspendLayout();
             // 
             // btnScanPorts
@@ -623,7 +633,7 @@
             // 
             // btnScan
             // 
-            this.btnScan.Location = new System.Drawing.Point(294, 322);
+            this.btnScan.Location = new System.Drawing.Point(40, 373);
             this.btnScan.Name = "btnScan";
             this.btnScan.Size = new System.Drawing.Size(143, 51);
             this.btnScan.TabIndex = 30;
@@ -633,7 +643,7 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(400, 246);
+            this.numericUpDown1.Location = new System.Drawing.Point(400, 291);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             255,
             0,
@@ -655,19 +665,123 @@
             // 
             // btnSetDelay
             // 
-            this.btnSetDelay.Location = new System.Drawing.Point(400, 273);
+            this.btnSetDelay.Location = new System.Drawing.Point(465, 291);
             this.btnSetDelay.Name = "btnSetDelay";
-            this.btnSetDelay.Size = new System.Drawing.Size(59, 23);
+            this.btnSetDelay.Size = new System.Drawing.Size(58, 20);
             this.btnSetDelay.TabIndex = 32;
             this.btnSetDelay.Text = "Set Delay";
             this.btnSetDelay.UseVisualStyleBackColor = true;
             this.btnSetDelay.Click += new System.EventHandler(this.btnSetDelay_Click);
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Location = new System.Drawing.Point(400, 318);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(59, 20);
+            this.numericUpDown2.TabIndex = 33;
+            this.numericUpDown2.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // btnSetLightDelay
+            // 
+            this.btnSetLightDelay.Location = new System.Drawing.Point(465, 318);
+            this.btnSetLightDelay.Name = "btnSetLightDelay";
+            this.btnSetLightDelay.Size = new System.Drawing.Size(58, 20);
+            this.btnSetLightDelay.TabIndex = 34;
+            this.btnSetLightDelay.Text = "Set";
+            this.btnSetLightDelay.UseVisualStyleBackColor = true;
+            this.btnSetLightDelay.Click += new System.EventHandler(this.btnSetLightDelay_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(307, 293);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(66, 13);
+            this.label13.TabIndex = 35;
+            this.label13.Text = "linStepDelay";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(307, 320);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(57, 13);
+            this.label14.TabIndex = 36;
+            this.label14.Text = "LightDelay";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(307, 346);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(83, 13);
+            this.label15.TabIndex = 39;
+            this.label15.Text = "IntergrationTime";
+            // 
+            // btnSetIntergrationTime
+            // 
+            this.btnSetIntergrationTime.Location = new System.Drawing.Point(465, 344);
+            this.btnSetIntergrationTime.Name = "btnSetIntergrationTime";
+            this.btnSetIntergrationTime.Size = new System.Drawing.Size(58, 20);
+            this.btnSetIntergrationTime.TabIndex = 38;
+            this.btnSetIntergrationTime.Text = "Set";
+            this.btnSetIntergrationTime.UseVisualStyleBackColor = true;
+            this.btnSetIntergrationTime.Click += new System.EventHandler(this.btnSetIntergrationTime_Click);
+            // 
+            // numericUpDown3
+            // 
+            this.numericUpDown3.Location = new System.Drawing.Point(400, 344);
+            this.numericUpDown3.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown3.Name = "numericUpDown3";
+            this.numericUpDown3.Size = new System.Drawing.Size(59, 20);
+            this.numericUpDown3.TabIndex = 37;
+            this.numericUpDown3.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            // 
+            // btnGetLine
+            // 
+            this.btnGetLine.Location = new System.Drawing.Point(238, 391);
+            this.btnGetLine.Name = "btnGetLine";
+            this.btnGetLine.Size = new System.Drawing.Size(75, 23);
+            this.btnGetLine.TabIndex = 40;
+            this.btnGetLine.Text = "Get Line";
+            this.btnGetLine.UseVisualStyleBackColor = true;
+            this.btnGetLine.Click += new System.EventHandler(this.btnGetLine_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(585, 465);
+            this.Controls.Add(this.btnGetLine);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.btnSetIntergrationTime);
+            this.Controls.Add(this.numericUpDown3);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.btnSetLightDelay);
+            this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.btnSetDelay);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.btnScan);
@@ -693,7 +807,10 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -755,6 +872,14 @@
         private System.Windows.Forms.Button btnScan;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Button btnSetDelay;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.Button btnSetLightDelay;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button btnSetIntergrationTime;
+        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.Button btnGetLine;
     }
 }
 
