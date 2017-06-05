@@ -93,6 +93,7 @@
             this.btnSetIntergrationTime = new System.Windows.Forms.Button();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.btnGetLine = new System.Windows.Forms.Button();
+            this.btnStopScan = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.Accelerometer.SuspendLayout();
@@ -188,12 +189,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnGetLine);
             this.groupBox1.Controls.Add(this.ClearButton);
             this.groupBox1.Controls.Add(this.getSamples);
             this.groupBox1.Controls.Add(this.txtSensor);
             this.groupBox1.Location = new System.Drawing.Point(238, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(135, 236);
+            this.groupBox1.Size = new System.Drawing.Size(135, 279);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Light Sensor";
@@ -633,7 +635,7 @@
             // 
             // btnScan
             // 
-            this.btnScan.Location = new System.Drawing.Point(40, 373);
+            this.btnScan.Location = new System.Drawing.Point(21, 329);
             this.btnScan.Name = "btnScan";
             this.btnScan.Size = new System.Drawing.Size(143, 51);
             this.btnScan.TabIndex = 30;
@@ -643,7 +645,7 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(400, 291);
+            this.numericUpDown1.Location = new System.Drawing.Point(443, 319);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             255,
             0,
@@ -665,7 +667,7 @@
             // 
             // btnSetDelay
             // 
-            this.btnSetDelay.Location = new System.Drawing.Point(465, 291);
+            this.btnSetDelay.Location = new System.Drawing.Point(508, 319);
             this.btnSetDelay.Name = "btnSetDelay";
             this.btnSetDelay.Size = new System.Drawing.Size(58, 20);
             this.btnSetDelay.TabIndex = 32;
@@ -675,7 +677,7 @@
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(400, 318);
+            this.numericUpDown2.Location = new System.Drawing.Point(443, 346);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -697,7 +699,7 @@
             // 
             // btnSetLightDelay
             // 
-            this.btnSetLightDelay.Location = new System.Drawing.Point(465, 318);
+            this.btnSetLightDelay.Location = new System.Drawing.Point(508, 346);
             this.btnSetLightDelay.Name = "btnSetLightDelay";
             this.btnSetLightDelay.Size = new System.Drawing.Size(58, 20);
             this.btnSetLightDelay.TabIndex = 34;
@@ -708,7 +710,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(307, 293);
+            this.label13.Location = new System.Drawing.Point(350, 321);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(66, 13);
             this.label13.TabIndex = 35;
@@ -717,7 +719,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(307, 320);
+            this.label14.Location = new System.Drawing.Point(350, 348);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(57, 13);
             this.label14.TabIndex = 36;
@@ -726,7 +728,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(307, 346);
+            this.label15.Location = new System.Drawing.Point(350, 374);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(83, 13);
             this.label15.TabIndex = 39;
@@ -734,7 +736,7 @@
             // 
             // btnSetIntergrationTime
             // 
-            this.btnSetIntergrationTime.Location = new System.Drawing.Point(465, 344);
+            this.btnSetIntergrationTime.Location = new System.Drawing.Point(508, 372);
             this.btnSetIntergrationTime.Name = "btnSetIntergrationTime";
             this.btnSetIntergrationTime.Size = new System.Drawing.Size(58, 20);
             this.btnSetIntergrationTime.TabIndex = 38;
@@ -744,7 +746,7 @@
             // 
             // numericUpDown3
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(400, 344);
+            this.numericUpDown3.Location = new System.Drawing.Point(443, 372);
             this.numericUpDown3.Minimum = new decimal(new int[] {
             1,
             0,
@@ -761,7 +763,7 @@
             // 
             // btnGetLine
             // 
-            this.btnGetLine.Location = new System.Drawing.Point(238, 391);
+            this.btnGetLine.Location = new System.Drawing.Point(29, 250);
             this.btnGetLine.Name = "btnGetLine";
             this.btnGetLine.Size = new System.Drawing.Size(75, 23);
             this.btnGetLine.TabIndex = 40;
@@ -769,12 +771,22 @@
             this.btnGetLine.UseVisualStyleBackColor = true;
             this.btnGetLine.Click += new System.EventHandler(this.btnGetLine_Click);
             // 
+            // btnStopScan
+            // 
+            this.btnStopScan.Location = new System.Drawing.Point(22, 387);
+            this.btnStopScan.Name = "btnStopScan";
+            this.btnStopScan.Size = new System.Drawing.Size(142, 23);
+            this.btnStopScan.TabIndex = 40;
+            this.btnStopScan.Text = "Stahp";
+            this.btnStopScan.UseVisualStyleBackColor = true;
+            this.btnStopScan.Click += new System.EventHandler(this.btnStopScan_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(585, 465);
-            this.Controls.Add(this.btnGetLine);
+            this.Controls.Add(this.btnStopScan);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.btnSetIntergrationTime);
             this.Controls.Add(this.numericUpDown3);
@@ -880,6 +892,7 @@
         private System.Windows.Forms.Button btnSetIntergrationTime;
         private System.Windows.Forms.NumericUpDown numericUpDown3;
         private System.Windows.Forms.Button btnGetLine;
+        private System.Windows.Forms.Button btnStopScan;
     }
 }
 

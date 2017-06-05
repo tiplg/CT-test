@@ -16,6 +16,7 @@ namespace CT_test_app
         delegate void SetTextCallback(string text);
 
         Accelerometer accel;
+        Lightsensor sensor;
         LinearArduino linArduino;
         RotatieArduino rotArduino;
         Scan currentScan;
@@ -34,10 +35,11 @@ namespace CT_test_app
             InitTimers();
 
             accel = new Accelerometer(serialPort1);
+            sensor = new Lightsensor(serialPort1);
             linArduino = new LinearArduino(serialPort1, 9, 16, 10.5);
             rotArduino = new RotatieArduino(serialPort1, 8);
 
-            //currentScan = new Scan(linArduino, rotArduino, 10, 10, 6.0);
+            currentScan = new Scan(linArduino, rotArduino, sensor, 10, 10, 6.0);
         }
 
         private void mainLoop(object sender, EventArgs e)
@@ -216,6 +218,8 @@ namespace CT_test_app
             cboPorts.Enabled = true;
             btnScanPorts.Enabled = true;
 
+            currentScan.StopScan();
+
             try
             {
                 serialPort1.Close();
@@ -346,7 +350,7 @@ namespace CT_test_app
 
         private void btnScan_Click(object sender, EventArgs e)
         {
-            currentScan = new Scan(linArduino, rotArduino, 10, 10, 6.0);
+            currentScan = new Scan(linArduino, rotArduino, sensor, 145, 10, 5.0);
 
             currentScan.StartScan();
 
@@ -383,7 +387,13 @@ namespace CT_test_app
 
         private void btnGetLine_Click(object sender, EventArgs e)
         {
-            serialPort1.WriteLine("1,11,10");
+            //serialPort1.WriteLine("1,11,10");
+            sensor.GetLine(10);
+        }
+
+        private void btnStopScan_Click(object sender, EventArgs e)
+        {
+            currentScan.StopScan();
         }
     }
 }
