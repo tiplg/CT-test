@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,6 +40,7 @@ namespace CT_test_app
         int currentLine;
 
         List<int> scanData;
+        public Bitmap sinogram { get; set; }
 
         public Scan(LinearArduino linArduino, RotatieArduino rotArduino, Lightsensor sensor,  int numSamplesPerLine, int numLinesPerScan, double scanDistance)
         {
@@ -55,7 +58,7 @@ namespace CT_test_app
             this.scanDistance = scanDistance;
 
             scanData = new List<int>();
-
+            sinogram = new Bitmap(numLinesPerScan, numSamplesPerLine);
             intergrationDelay = 5 * 1000;
             lightDelay = 10 * 1000;
 
@@ -67,6 +70,7 @@ namespace CT_test_app
             stepsPerSweep = Convert.ToInt32(200 * 16 * (scanDistance / 0.8));
             sweepTime = Convert.ToInt32(stepsPerSweep * (linStepDelay + 23.14336967 + (0.006068607 * linStepDelay)));
 
+            lightDelay = Convert.ToInt32(sweepTime / numSamplesPerLine);
 
             Console.WriteLine("stepsPerRot: " + stepsPerRot + " rotTime: " + rotTime + " StepsPerSweep: " + stepsPerSweep + " sweepTime: " + sweepTime);
             Console.WriteLine("lightDelay: " + lightDelay + " total scannertime = " + lightDelay * numSamplesPerLine);
@@ -85,8 +89,12 @@ namespace CT_test_app
         {
             currentLine = 0;
 
-            rotTimer.Interval = (sweepTime / 1000) + 50;
-            linTimer.Interval = (rotTime / 1000) + 100;
+            rotTimer.Interval = (sweepTime / 1000) + 150;
+            linTimer.Interval = (rotTime / 1000) + 150;
+
+            Console.WriteLine("Scan " + numLinesPerScan + "x" + numSamplesPerLine + " started aprox ETA: " + ((rotTimer.Interval + linTimer.Interval) * numLinesPerScan / 1000).ToString());
+
+            sensor.SetLightDelay(lightDelay);
 
             homeTimer.Start();
 
@@ -101,6 +109,8 @@ namespace CT_test_app
             homeTimer.Stop();
 
             ScanDone = true;
+
+
 
             Console.WriteLine("STAHPHASAPS");
         }
@@ -150,15 +160,43 @@ namespace CT_test_app
 
             if (++currentLine < numLinesPerScan)
             {
-                rotArduino.StepLeft();
+                rotArduino.turnLeft(stepsPerRot);
                 Console.WriteLine("currentLine: " + currentLine);
                 linTimer.Start();
             }
             else
             {
+                int maxValue = scanData.Max();
+                float value;
+                Color color;
+                Console.WriteLine("maxValue: " + maxValue.ToString());
+
+                for (int x = 0; x < sinogram.Width; x++)
+                {
+                    for (int y = 0; y < sinogram.Height; y++)
+                    {
+                        
+                        if (toTheLeftToTheLeft)
+                        {
+                            Console.WriteLine(x * numLinesPerScan + y);
+                            value = scanData[x * numLinesPerScan + y];
+                        }
+                        else
+                        {
+                            Console.WriteLine(x * numLinesPerScan + numSamplesPerLine - 1 - y);
+                            value = scanData[x * numLinesPerScan + numSamplesPerLine - 1 - y];
+                        }
+
+                        value = 255 - (value / maxValue * 255);
+                        color = Color.FromArgb(Convert.ToInt32(value), Convert.ToInt32(value), Convert.ToInt32(value));
+                        sinogram.SetPixel(x, y, color);
+                    }
+
+                    toTheLeftToTheLeft = !toTheLeftToTheLeft;
+                }
+                sinogram.Save("sinogram" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".jpg", ImageFormat.Jpeg);
                 Console.WriteLine("scan done");
                 linTimer.Stop();
-
 
                 // scandata verwerken enzo
                 ScanDone = true;
@@ -176,7 +214,7 @@ namespace CT_test_app
             else
             {
                 homeTimer.Interval = 3000;
-                linArduino.SweepLeft(7.0-(scanDistance/2));
+                linArduino.SweepLeft(7.25-(scanDistance/2));
                 Console.WriteLine("HOME");
                 Console.WriteLine("to start pos");
                 homed = true;

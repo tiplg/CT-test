@@ -22,6 +22,11 @@ namespace CT_test_app
             serialport1.WriteLine("1,11,"+samples.ToString());
         }
 
+        public void SetLightDelay(int delay)
+        {
+            serialport1.WriteLine("1,3," + delay.ToString());
+        }
+
 
     }
 }

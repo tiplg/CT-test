@@ -350,7 +350,7 @@ namespace CT_test_app
 
         private void btnScan_Click(object sender, EventArgs e)
         {
-            currentScan = new Scan(linArduino, rotArduino, sensor, 145, 10, 5.0);
+            currentScan = new Scan(linArduino, rotArduino, sensor, 30, 30, 5.0);
 
             currentScan.StartScan();
 
@@ -394,6 +394,12 @@ namespace CT_test_app
         private void btnStopScan_Click(object sender, EventArgs e)
         {
             currentScan.StopScan();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Image = currentScan.sinogram;
+            
         }
     }
 }
