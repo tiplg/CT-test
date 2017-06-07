@@ -97,6 +97,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.UDLines = new System.Windows.Forms.NumericUpDown();
+            this.UDcm = new System.Windows.Forms.NumericUpDown();
+            this.UDSamples = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.Accelerometer.SuspendLayout();
@@ -106,6 +110,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UDLines)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UDcm)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UDSamples)).BeginInit();
             this.SuspendLayout();
             // 
             // btnScanPorts
@@ -659,7 +667,7 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(472, 230);
+            this.numericUpDown1.Location = new System.Drawing.Point(99, 25);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             255,
             0,
@@ -681,7 +689,7 @@
             // 
             // btnSetDelay
             // 
-            this.btnSetDelay.Location = new System.Drawing.Point(537, 230);
+            this.btnSetDelay.Location = new System.Drawing.Point(164, 25);
             this.btnSetDelay.Name = "btnSetDelay";
             this.btnSetDelay.Size = new System.Drawing.Size(58, 20);
             this.btnSetDelay.TabIndex = 32;
@@ -691,7 +699,7 @@
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(472, 257);
+            this.numericUpDown2.Location = new System.Drawing.Point(99, 52);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -713,7 +721,7 @@
             // 
             // btnSetLightDelay
             // 
-            this.btnSetLightDelay.Location = new System.Drawing.Point(537, 257);
+            this.btnSetLightDelay.Location = new System.Drawing.Point(164, 52);
             this.btnSetLightDelay.Name = "btnSetLightDelay";
             this.btnSetLightDelay.Size = new System.Drawing.Size(58, 20);
             this.btnSetLightDelay.TabIndex = 34;
@@ -724,7 +732,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(379, 232);
+            this.label13.Location = new System.Drawing.Point(6, 27);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(66, 13);
             this.label13.TabIndex = 35;
@@ -733,7 +741,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(379, 259);
+            this.label14.Location = new System.Drawing.Point(6, 54);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(57, 13);
             this.label14.TabIndex = 36;
@@ -742,7 +750,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(379, 285);
+            this.label15.Location = new System.Drawing.Point(6, 80);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(83, 13);
             this.label15.TabIndex = 39;
@@ -750,7 +758,7 @@
             // 
             // btnSetIntergrationTime
             // 
-            this.btnSetIntergrationTime.Location = new System.Drawing.Point(537, 283);
+            this.btnSetIntergrationTime.Location = new System.Drawing.Point(164, 78);
             this.btnSetIntergrationTime.Name = "btnSetIntergrationTime";
             this.btnSetIntergrationTime.Size = new System.Drawing.Size(58, 20);
             this.btnSetIntergrationTime.TabIndex = 38;
@@ -760,7 +768,7 @@
             // 
             // numericUpDown3
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(472, 283);
+            this.numericUpDown3.Location = new System.Drawing.Point(99, 78);
             this.numericUpDown3.Minimum = new decimal(new int[] {
             1,
             0,
@@ -788,7 +796,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(244, 314);
+            this.pictureBox1.Location = new System.Drawing.Point(388, 350);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(157, 147);
             this.pictureBox1.TabIndex = 41;
@@ -796,7 +804,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(498, 343);
+            this.button1.Location = new System.Drawing.Point(617, 357);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 42;
@@ -806,29 +814,114 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(443, 387);
+            this.progressBar1.Location = new System.Drawing.Point(556, 387);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(191, 23);
+            this.progressBar1.Size = new System.Drawing.Size(136, 23);
             this.progressBar1.TabIndex = 43;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.label13);
+            this.groupBox5.Controls.Add(this.numericUpDown1);
+            this.groupBox5.Controls.Add(this.btnSetDelay);
+            this.groupBox5.Controls.Add(this.numericUpDown2);
+            this.groupBox5.Controls.Add(this.btnSetLightDelay);
+            this.groupBox5.Controls.Add(this.label15);
+            this.groupBox5.Controls.Add(this.label14);
+            this.groupBox5.Controls.Add(this.btnSetIntergrationTime);
+            this.groupBox5.Controls.Add(this.numericUpDown3);
+            this.groupBox5.Location = new System.Drawing.Point(379, 235);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(241, 109);
+            this.groupBox5.TabIndex = 44;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "groupBox5";
+            // 
+            // UDLines
+            // 
+            this.UDLines.Location = new System.Drawing.Point(189, 334);
+            this.UDLines.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.UDLines.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.UDLines.Name = "UDLines";
+            this.UDLines.Size = new System.Drawing.Size(51, 20);
+            this.UDLines.TabIndex = 45;
+            this.UDLines.Value = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            // 
+            // UDcm
+            // 
+            this.UDcm.DecimalPlaces = 1;
+            this.UDcm.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.UDcm.Location = new System.Drawing.Point(189, 387);
+            this.UDcm.Maximum = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            this.UDcm.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.UDcm.Name = "UDcm";
+            this.UDcm.Size = new System.Drawing.Size(51, 20);
+            this.UDcm.TabIndex = 47;
+            this.UDcm.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // UDSamples
+            // 
+            this.UDSamples.Location = new System.Drawing.Point(190, 360);
+            this.UDSamples.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.UDSamples.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.UDSamples.Name = "UDSamples";
+            this.UDSamples.Size = new System.Drawing.Size(51, 20);
+            this.UDSamples.TabIndex = 48;
+            this.UDSamples.Value = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(671, 473);
+            this.ClientSize = new System.Drawing.Size(713, 550);
+            this.Controls.Add(this.UDSamples);
+            this.Controls.Add(this.UDcm);
+            this.Controls.Add(this.UDLines);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnStopScan);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.btnSetIntergrationTime);
-            this.Controls.Add(this.numericUpDown3);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.btnSetLightDelay);
-            this.Controls.Add(this.numericUpDown2);
-            this.Controls.Add(this.btnSetDelay);
-            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.btnScan);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -855,8 +948,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UDLines)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UDcm)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UDSamples)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -930,6 +1027,10 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.NumericUpDown UDLines;
+        private System.Windows.Forms.NumericUpDown UDcm;
+        private System.Windows.Forms.NumericUpDown UDSamples;
     }
 }
 

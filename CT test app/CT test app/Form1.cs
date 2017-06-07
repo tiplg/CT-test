@@ -39,7 +39,15 @@ namespace CT_test_app
             linArduino = new LinearArduino(serialPort1, 9, 16, 10.5);
             rotArduino = new RotatieArduino(serialPort1, 8);
 
-            currentScan = new Scan(linArduino, rotArduino, sensor, 10, 10, 6.0);
+            foreach (Control item in this.Controls)
+            {
+                if (item is GroupBox)
+                {
+                    item.Enabled = false;
+                }
+            }
+
+            //currentScan = new Scan(linArduino, rotArduino, sensor, 10, 10, 6.0);
         }
 
         private void mainLoop(object sender, EventArgs e)
@@ -191,15 +199,25 @@ namespace CT_test_app
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            btnConnect.Enabled = false;
-            btnDisconnect.Enabled = true;
-            cboPorts.Enabled = false;
-            btnScanPorts.Enabled = false;
+
 
             try
             {
                 serialPort1.PortName = cboPorts.Text;
                 serialPort1.Open();
+
+                btnConnect.Enabled = false;
+                btnDisconnect.Enabled = true;
+                cboPorts.Enabled = false;
+                btnScanPorts.Enabled = false;
+
+                foreach (Control item in this.Controls)
+                {
+                    if (item is GroupBox)
+                    {
+                        item.Enabled = true;
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -213,16 +231,26 @@ namespace CT_test_app
 
         private void btnDisconnect_Click(object sender, EventArgs e)
         {
-            btnConnect.Enabled = true;
-            btnDisconnect.Enabled = false;
-            cboPorts.Enabled = true;
-            btnScanPorts.Enabled = true;
 
-            currentScan.StopScan();
 
             try
             {
                 serialPort1.Close();
+
+                btnConnect.Enabled = true;
+                btnDisconnect.Enabled = false;
+                cboPorts.Enabled = true;
+                btnScanPorts.Enabled = true;
+
+                foreach (Control item in this.Controls)
+                {
+                    if (item is GroupBox)
+                    {
+                        item.Enabled = false;
+                    }
+                }
+
+                currentScan.StopScan();
             }
             catch (Exception ex)
             {
@@ -350,7 +378,8 @@ namespace CT_test_app
 
         private void btnScan_Click(object sender, EventArgs e)
         {
-            currentScan = new Scan(linArduino, rotArduino, sensor, 30, 30, 5.0);
+
+            currentScan = new Scan(linArduino, rotArduino, sensor, Convert.ToInt32(UDSamples.Value), Convert.ToInt32(UDLines.Value), (double)UDcm.Value);
 
             currentScan.StartScan();
 

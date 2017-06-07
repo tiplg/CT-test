@@ -194,7 +194,7 @@ namespace CT_test_app
 
                     toTheLeftToTheLeft = !toTheLeftToTheLeft;
                 }
-                sinogram.Save("sinogram" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".jpg", ImageFormat.Jpeg);
+                sinogram.Save("sinogram" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".jpg", ImageFormat.Jpeg);
                 Console.WriteLine("scan done");
                 linTimer.Stop();
 
