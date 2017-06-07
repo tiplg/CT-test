@@ -62,13 +62,13 @@ namespace CT_test_app
             intergrationDelay = 5 * 1000;
             lightDelay = 10 * 1000;
 
-            linStepDelay = 50;
+            linStepDelay = 30;
 
             stepsPerRot = (32000 / (2 * numLinesPerScan));
             rotTime = ((500 + 20) * stepsPerRot);
 
             stepsPerSweep = Convert.ToInt32(200 * 16 * (scanDistance / 0.8));
-            sweepTime = Convert.ToInt32(stepsPerSweep * (linStepDelay + 23.14336967 + (0.006068607 * linStepDelay)));
+            sweepTime = 1442248; //Convert.ToInt32(stepsPerSweep * (linStepDelay + 23.14336967 + (0.006068607 * linStepDelay)));
 
             lightDelay = Convert.ToInt32(sweepTime / numSamplesPerLine);
 
@@ -89,12 +89,13 @@ namespace CT_test_app
         {
             currentLine = 0;
 
-            rotTimer.Interval = (sweepTime / 1000) + 150;
-            linTimer.Interval = (rotTime / 1000) + 150;
+            rotTimer.Interval = (sweepTime / 1000) + 150;// 150;
+            linTimer.Interval = (rotTime / 1000) + 150; // + 150;
 
             Console.WriteLine("Scan " + numLinesPerScan + "x" + numSamplesPerLine + " started aprox ETA: " + ((rotTimer.Interval + linTimer.Interval) * numLinesPerScan / 1000).ToString());
 
             sensor.SetLightDelay(lightDelay);
+            //linArduino.SetStepDelay(linStepDelay);
 
             homeTimer.Start();
 
@@ -166,7 +167,7 @@ namespace CT_test_app
             }
             else
             {
-                int maxValue = scanData.Max();
+                int maxValue = 80;
                 float value;
                 Color color;
                 Console.WriteLine("maxValue: " + maxValue.ToString());

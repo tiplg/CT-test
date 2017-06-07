@@ -682,7 +682,7 @@
             this.numericUpDown1.Size = new System.Drawing.Size(59, 20);
             this.numericUpDown1.TabIndex = 31;
             this.numericUpDown1.Value = new decimal(new int[] {
-            25,
+            30,
             0,
             0,
             0});
@@ -854,7 +854,7 @@
             this.UDLines.Size = new System.Drawing.Size(51, 20);
             this.UDLines.TabIndex = 45;
             this.UDLines.Value = new decimal(new int[] {
-            500,
+            100,
             0,
             0,
             0});
@@ -882,7 +882,7 @@
             this.UDcm.Size = new System.Drawing.Size(51, 20);
             this.UDcm.TabIndex = 47;
             this.UDcm.Value = new decimal(new int[] {
-            1,
+            4,
             0,
             0,
             0});
@@ -904,7 +904,7 @@
             this.UDSamples.Size = new System.Drawing.Size(51, 20);
             this.UDSamples.TabIndex = 48;
             this.UDSamples.Value = new decimal(new int[] {
-            500,
+            100,
             0,
             0,
             0});
