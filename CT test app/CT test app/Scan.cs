@@ -59,7 +59,7 @@ namespace CT_test_app
 
             scanData = new List<int>();
             sinogram = new Bitmap(numLinesPerScan, numSamplesPerLine);
-            intergrationDelay = 5 * 1000;
+            intergrationDelay = 3 * 1000;
             lightDelay = 10 * 1000;
 
             linStepDelay = 30;
@@ -68,7 +68,7 @@ namespace CT_test_app
             rotTime = ((500 + 20) * stepsPerRot);
 
             stepsPerSweep = Convert.ToInt32(200 * 16 * (scanDistance / 0.8));
-            sweepTime = 1442248; //Convert.ToInt32(stepsPerSweep * (linStepDelay + 23.14336967 + (0.006068607 * linStepDelay)));
+            sweepTime = 960832; //Convert.ToInt32(stepsPerSweep * (linStepDelay + 23.14336967 + (0.006068607 * linStepDelay)));
 
             lightDelay = Convert.ToInt32(sweepTime / numSamplesPerLine);
 
@@ -167,24 +167,75 @@ namespace CT_test_app
             }
             else
             {
-                int maxValue = 80;
+
+
+                int maxValue = scanData.Max(); //80;
                 float value;
                 Color color;
-                Console.WriteLine("maxValue: " + maxValue.ToString());
+                Console.WriteLine("maxValue: " + scanData.Max().ToString());
 
+                int x;
+                int y;
+
+                for (int i = 0; i < 500; i++)
+                {
+                    //scanData.Add(10);
+                }
+      
+
+                Console.WriteLine("total points: " + scanData.Count);
+
+                for (int i = 0; i < scanData.Count; i++)
+                {
+
+                    x = i / numSamplesPerLine;
+                    value = scanData[i];
+
+                    if (x % 2 != 0)
+                    {
+                        y = i % numSamplesPerLine;
+                    }
+                    else
+                    {
+                        y = (numSamplesPerLine - 1) - (i % numSamplesPerLine);
+                    }
+                
+
+                    //Console.WriteLine("x: " + x + " y: " + y);
+
+
+                    value = 255 - (value / maxValue * 255);
+                    color = Color.FromArgb(Convert.ToInt32(value), Convert.ToInt32(value), Convert.ToInt32(value));
+
+                    try
+                    {
+                        sinogram.SetPixel(x, y, color);
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                    
+                    
+
+                    
+
+                }
+
+                /*
                 for (int x = 0; x < sinogram.Width; x++)
                 {
                     for (int y = 0; y < sinogram.Height; y++)
                     {
-                        
+                        //Console.WriteLine("x: " + x + " y: " + y);
                         if (toTheLeftToTheLeft)
                         {
-                            Console.WriteLine(x * numLinesPerScan + y);
+                            //Console.WriteLine(x * numLinesPerScan + y);
                             value = scanData[x * numLinesPerScan + y];
                         }
                         else
                         {
-                            Console.WriteLine(x * numLinesPerScan + numSamplesPerLine - 1 - y);
+                            //Console.WriteLine(x * numLinesPerScan + numSamplesPerLine - 1 - y);
                             value = scanData[x * numLinesPerScan + numSamplesPerLine - 1 - y];
                         }
 
@@ -195,6 +246,7 @@ namespace CT_test_app
 
                     toTheLeftToTheLeft = !toTheLeftToTheLeft;
                 }
+                */
                 sinogram.Save("sinogram" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".jpg", ImageFormat.Jpeg);
                 Console.WriteLine("scan done");
                 linTimer.Stop();

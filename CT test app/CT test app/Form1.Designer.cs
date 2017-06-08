@@ -101,6 +101,7 @@
             this.UDLines = new System.Windows.Forms.NumericUpDown();
             this.UDcm = new System.Windows.Forms.NumericUpDown();
             this.UDSamples = new System.Windows.Forms.NumericUpDown();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.Accelerometer.SuspendLayout();
@@ -114,6 +115,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.UDLines)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UDcm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UDSamples)).BeginInit();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnScanPorts
@@ -657,7 +659,7 @@
             // 
             // btnScan
             // 
-            this.btnScan.Location = new System.Drawing.Point(21, 329);
+            this.btnScan.Location = new System.Drawing.Point(27, 36);
             this.btnScan.Name = "btnScan";
             this.btnScan.Size = new System.Drawing.Size(143, 51);
             this.btnScan.TabIndex = 30;
@@ -785,7 +787,7 @@
             // 
             // btnStopScan
             // 
-            this.btnStopScan.Location = new System.Drawing.Point(22, 387);
+            this.btnStopScan.Location = new System.Drawing.Point(28, 94);
             this.btnStopScan.Name = "btnStopScan";
             this.btnStopScan.Size = new System.Drawing.Size(142, 23);
             this.btnStopScan.TabIndex = 40;
@@ -839,7 +841,7 @@
             // 
             // UDLines
             // 
-            this.UDLines.Location = new System.Drawing.Point(189, 334);
+            this.UDLines.Location = new System.Drawing.Point(195, 41);
             this.UDLines.Maximum = new decimal(new int[] {
             500,
             0,
@@ -854,7 +856,7 @@
             this.UDLines.Size = new System.Drawing.Size(51, 20);
             this.UDLines.TabIndex = 45;
             this.UDLines.Value = new decimal(new int[] {
-            100,
+            180,
             0,
             0,
             0});
@@ -867,7 +869,7 @@
             0,
             0,
             65536});
-            this.UDcm.Location = new System.Drawing.Point(189, 387);
+            this.UDcm.Location = new System.Drawing.Point(195, 94);
             this.UDcm.Maximum = new decimal(new int[] {
             6,
             0,
@@ -882,14 +884,14 @@
             this.UDcm.Size = new System.Drawing.Size(51, 20);
             this.UDcm.TabIndex = 47;
             this.UDcm.Value = new decimal(new int[] {
-            4,
+            3,
             0,
             0,
             0});
             // 
             // UDSamples
             // 
-            this.UDSamples.Location = new System.Drawing.Point(190, 360);
+            this.UDSamples.Location = new System.Drawing.Point(196, 67);
             this.UDSamples.Maximum = new decimal(new int[] {
             500,
             0,
@@ -904,25 +906,35 @@
             this.UDSamples.Size = new System.Drawing.Size(51, 20);
             this.UDSamples.TabIndex = 48;
             this.UDSamples.Value = new decimal(new int[] {
-            100,
+            128,
             0,
             0,
             0});
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.btnScan);
+            this.groupBox6.Controls.Add(this.UDSamples);
+            this.groupBox6.Controls.Add(this.btnStopScan);
+            this.groupBox6.Controls.Add(this.UDcm);
+            this.groupBox6.Controls.Add(this.UDLines);
+            this.groupBox6.Location = new System.Drawing.Point(22, 317);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(275, 139);
+            this.groupBox6.TabIndex = 49;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "groupBox6";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(713, 550);
-            this.Controls.Add(this.UDSamples);
-            this.Controls.Add(this.UDcm);
-            this.Controls.Add(this.UDLines);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.btnStopScan);
-            this.Controls.Add(this.btnScan);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.Accelerometer);
@@ -953,6 +965,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.UDLines)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UDcm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UDSamples)).EndInit();
+            this.groupBox6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1031,6 +1044,7 @@
         private System.Windows.Forms.NumericUpDown UDLines;
         private System.Windows.Forms.NumericUpDown UDcm;
         private System.Windows.Forms.NumericUpDown UDSamples;
+        private System.Windows.Forms.GroupBox groupBox6;
     }
 }
 
