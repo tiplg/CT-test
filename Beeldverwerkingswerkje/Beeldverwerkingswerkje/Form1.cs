@@ -15,6 +15,8 @@ namespace Beeldverwerkingswerkje
         Pen myPen = new Pen(Color.Black);
         Graphics g = null;
 
+        static int globali = 0;
+
         static int center_x, center_y;
         static int start_x, start_y;
         static int end_x, end_y;
@@ -22,7 +24,7 @@ namespace Beeldverwerkingswerkje
         static int numScans = 0;
         static int linesPerScan = 0;
         static int distBetweenLines = 3;
-        static int lineLength = 700;
+        static int lineLength = 600;
         static int sensorDistance = 300;
 
         double curAngle = 0;
@@ -44,7 +46,7 @@ namespace Beeldverwerkingswerkje
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
-            myPen.Width = 3;
+            myPen.Width = 1;
             g = panel1.CreateGraphics();
 
             g.Clear(Color.White);
@@ -58,9 +60,53 @@ namespace Beeldverwerkingswerkje
 
             for (int i = 0; i < numScans; i++)
             {
-                drawScan(i);
+                //drawScan(i);
             }
             
+
+        }
+
+        private void btnGo_Click(object sender, EventArgs e)
+        {
+            curAngle = 0;
+
+            for (int i = 0; i < numScans; i++)
+            {
+                drawScan(i);
+            }
+        }
+
+        private void cboxStep_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cboxStep.Checked)
+            {
+                btnStep.Enabled = true;
+                btnGo.Enabled = false;
+
+                curAngle = 0;
+                globali = 0;
+
+                panel1.Refresh();
+            }
+            else
+            {
+                btnStep.Enabled = false;
+                btnGo.Enabled = true;
+
+                curAngle = 0;
+                globali = 0;
+
+                panel1.Refresh();
+            }
+        }
+
+        private void btnStep_Click(object sender, EventArgs e)
+        {
+            if (globali < numScans)
+            {
+                drawScan(globali);
+                globali++;
+            }
 
         }
 
@@ -73,18 +119,27 @@ namespace Beeldverwerkingswerkje
             //sinogram = new Bitmap("D:\\Dropbox\\3.3 CT scanner\\Sinograms\\sinogramEchteScan.png");
             if (result == DialogResult.OK)
             {
+                startPoints.Clear();
+
+                center_x = panel1.Width / 2;
+                center_y = panel1.Height / 2;
+
+                curAngle = 0;
+
+                start_x = center_x;
+                start_y = center_y;
+
                 //sinogram = new Bitmap("D:\\Dropbox\\3.3 CT scanner\\Sinograms\\sinogramEchteScan.png");
                 sinogram = new Bitmap(openFileDialog1.FileName.ToString());
 
                 numScans = sinogram.Width;
                 linesPerScan = sinogram.Height;
 
+                distBetweenLines = 768 / linesPerScan;
+
                 angleIncrement = (double)180 / numScans;
 
                 Console.WriteLine(angleIncrement);
-
-                center_x = panel1.Width / 2;
-                center_y = panel1.Height / 2;
 
                 curAngle = 0;
 
@@ -104,11 +159,10 @@ namespace Beeldverwerkingswerkje
                     curAngle += angleIncrement;
                 }
 
-                Console.WriteLine(startPoints.Count);
-
-
+                Console.WriteLine("startPoints: " + startPoints.Count);
                 Console.WriteLine("width: " + sinogram.Width + " height: " + sinogram.Height);
-
+                Console.Write("curAngle: " + curAngle + " angleIncrement: " + angleIncrement);
+                //Console.WriteLine
 
             }
 
