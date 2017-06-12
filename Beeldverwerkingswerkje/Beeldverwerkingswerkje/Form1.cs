@@ -186,7 +186,7 @@ namespace Beeldverwerkingswerkje
                 Points[0] = new Point(start_x, start_y);
                 Points[1] = new Point(end_x, end_y);
 
-                if (sinogram.GetPixel(i, a).B < 30)
+                if (sinogram.GetPixel(i, a).B < 10)
                 {
                     g.DrawLines(myPen, Points);
                 }
