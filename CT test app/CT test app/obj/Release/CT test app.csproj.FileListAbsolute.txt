@@ -1,0 +1,8 @@
+D:\Github\CT test\CT test app\CT test app\bin\Release\CT test app.exe.config
+D:\Github\CT test\CT test app\CT test app\bin\Release\CT test app.exe
+D:\Github\CT test\CT test app\CT test app\bin\Release\CT test app.pdb
+D:\Github\CT test\CT test app\CT test app\obj\Release\CT_test_app.Form1.resources
+D:\Github\CT test\CT test app\CT test app\obj\Release\CT_test_app.Properties.Resources.resources
+D:\Github\CT test\CT test app\CT test app\obj\Release\CT test app.csproj.GenerateResource.Cache
+D:\Github\CT test\CT test app\CT test app\obj\Release\CT test app.exe
+D:\Github\CT test\CT test app\CT test app\obj\Release\CT test app.pdb

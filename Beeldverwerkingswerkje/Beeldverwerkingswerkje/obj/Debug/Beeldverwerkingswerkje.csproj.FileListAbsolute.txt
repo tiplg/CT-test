@@ -1,0 +1,9 @@
+D:\Github\CT test\Beeldverwerkingswerkje\Beeldverwerkingswerkje\bin\Debug\Beeldverwerkingswerkje.exe.config
+D:\Github\CT test\Beeldverwerkingswerkje\Beeldverwerkingswerkje\bin\Debug\Beeldverwerkingswerkje.exe
+D:\Github\CT test\Beeldverwerkingswerkje\Beeldverwerkingswerkje\bin\Debug\Beeldverwerkingswerkje.pdb
+D:\Github\CT test\Beeldverwerkingswerkje\Beeldverwerkingswerkje\obj\Debug\Beeldverwerkingswerkje.csprojResolveAssemblyReference.cache
+D:\Github\CT test\Beeldverwerkingswerkje\Beeldverwerkingswerkje\obj\Debug\Beeldverwerkingswerkje.Form1.resources
+D:\Github\CT test\Beeldverwerkingswerkje\Beeldverwerkingswerkje\obj\Debug\Beeldverwerkingswerkje.Properties.Resources.resources
+D:\Github\CT test\Beeldverwerkingswerkje\Beeldverwerkingswerkje\obj\Debug\Beeldverwerkingswerkje.csproj.GenerateResource.Cache
+D:\Github\CT test\Beeldverwerkingswerkje\Beeldverwerkingswerkje\obj\Debug\Beeldverwerkingswerkje.exe
+D:\Github\CT test\Beeldverwerkingswerkje\Beeldverwerkingswerkje\obj\Debug\Beeldverwerkingswerkje.pdb
