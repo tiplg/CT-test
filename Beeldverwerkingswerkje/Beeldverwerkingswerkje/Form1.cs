@@ -46,7 +46,7 @@ namespace Beeldverwerkingswerkje
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
-            myPen.Width = 1;
+            myPen.Width = 2;
             g = panel1.CreateGraphics();
 
             g.Clear(Color.White);
@@ -186,7 +186,7 @@ namespace Beeldverwerkingswerkje
                 Points[0] = new Point(start_x, start_y);
                 Points[1] = new Point(end_x, end_y);
 
-                if (sinogram.GetPixel(i, a).B == 0)
+                if (sinogram.GetPixel(i, a).B < 30)
                 {
                     g.DrawLines(myPen, Points);
                 }
