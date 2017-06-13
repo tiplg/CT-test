@@ -681,7 +681,7 @@
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(59, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(44, 20);
             this.numericUpDown1.TabIndex = 31;
             this.numericUpDown1.Value = new decimal(new int[] {
             30,
@@ -691,9 +691,9 @@
             // 
             // btnSetDelay
             // 
-            this.btnSetDelay.Location = new System.Drawing.Point(164, 25);
+            this.btnSetDelay.Location = new System.Drawing.Point(149, 25);
             this.btnSetDelay.Name = "btnSetDelay";
-            this.btnSetDelay.Size = new System.Drawing.Size(58, 20);
+            this.btnSetDelay.Size = new System.Drawing.Size(36, 20);
             this.btnSetDelay.TabIndex = 32;
             this.btnSetDelay.Text = "Set Delay";
             this.btnSetDelay.UseVisualStyleBackColor = true;
@@ -713,7 +713,7 @@
             0,
             0});
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(59, 20);
+            this.numericUpDown2.Size = new System.Drawing.Size(44, 20);
             this.numericUpDown2.TabIndex = 33;
             this.numericUpDown2.Value = new decimal(new int[] {
             10,
@@ -723,9 +723,9 @@
             // 
             // btnSetLightDelay
             // 
-            this.btnSetLightDelay.Location = new System.Drawing.Point(164, 52);
+            this.btnSetLightDelay.Location = new System.Drawing.Point(149, 52);
             this.btnSetLightDelay.Name = "btnSetLightDelay";
-            this.btnSetLightDelay.Size = new System.Drawing.Size(58, 20);
+            this.btnSetLightDelay.Size = new System.Drawing.Size(36, 20);
             this.btnSetLightDelay.TabIndex = 34;
             this.btnSetLightDelay.Text = "Set";
             this.btnSetLightDelay.UseVisualStyleBackColor = true;
@@ -760,9 +760,9 @@
             // 
             // btnSetIntergrationTime
             // 
-            this.btnSetIntergrationTime.Location = new System.Drawing.Point(164, 78);
+            this.btnSetIntergrationTime.Location = new System.Drawing.Point(149, 78);
             this.btnSetIntergrationTime.Name = "btnSetIntergrationTime";
-            this.btnSetIntergrationTime.Size = new System.Drawing.Size(58, 20);
+            this.btnSetIntergrationTime.Size = new System.Drawing.Size(36, 20);
             this.btnSetIntergrationTime.TabIndex = 38;
             this.btnSetIntergrationTime.Text = "Set";
             this.btnSetIntergrationTime.UseVisualStyleBackColor = true;
@@ -777,7 +777,7 @@
             0,
             0});
             this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(59, 20);
+            this.numericUpDown3.Size = new System.Drawing.Size(44, 20);
             this.numericUpDown3.TabIndex = 37;
             this.numericUpDown3.Value = new decimal(new int[] {
             5,
@@ -798,7 +798,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(388, 350);
+            this.pictureBox1.Location = new System.Drawing.Point(303, 350);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(157, 147);
             this.pictureBox1.TabIndex = 41;
@@ -806,7 +806,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(617, 357);
+            this.button1.Location = new System.Drawing.Point(466, 355);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 42;
@@ -816,9 +816,9 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(556, 387);
+            this.progressBar1.Location = new System.Drawing.Point(12, 462);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(136, 23);
+            this.progressBar1.Size = new System.Drawing.Size(285, 23);
             this.progressBar1.TabIndex = 43;
             // 
             // groupBox5
@@ -834,10 +834,10 @@
             this.groupBox5.Controls.Add(this.numericUpDown3);
             this.groupBox5.Location = new System.Drawing.Point(379, 235);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(241, 109);
+            this.groupBox5.Size = new System.Drawing.Size(193, 109);
             this.groupBox5.TabIndex = 44;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "groupBox5";
+            this.groupBox5.Text = "Timing";
             // 
             // UDLines
             // 
@@ -923,13 +923,13 @@
             this.groupBox6.Size = new System.Drawing.Size(275, 139);
             this.groupBox6.TabIndex = 49;
             this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "groupBox6";
+            this.groupBox6.Text = "Scan";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(713, 550);
+            this.ClientSize = new System.Drawing.Size(586, 508);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.progressBar1);
@@ -944,8 +944,11 @@
             this.Controls.Add(this.btnDisconnect);
             this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.btnScanPorts);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.ShowIcon = false;
+            this.Text = "🐱 Scan";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
