@@ -864,11 +864,6 @@
             // UDcm
             // 
             this.UDcm.DecimalPlaces = 1;
-            this.UDcm.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
             this.UDcm.Location = new System.Drawing.Point(195, 94);
             this.UDcm.Maximum = new decimal(new int[] {
             6,

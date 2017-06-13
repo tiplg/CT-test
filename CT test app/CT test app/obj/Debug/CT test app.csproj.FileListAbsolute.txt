@@ -7,3 +7,12 @@ D:\Github\CT test\CT test app\CT test app\obj\Debug\CT_test_app.Properties.Resou
 D:\Github\CT test\CT test app\CT test app\obj\Debug\CT test app.csproj.GenerateResource.Cache
 D:\Github\CT test\CT test app\CT test app\obj\Debug\CT test app.exe
 D:\Github\CT test\CT test app\CT test app\obj\Debug\CT test app.pdb
+C:\Users\joopi\Source\Repos\CT-test\CT test app\CT test app\bin\Debug\CT test app.exe.config
+C:\Users\joopi\Source\Repos\CT-test\CT test app\CT test app\bin\Debug\CT test app.exe
+C:\Users\joopi\Source\Repos\CT-test\CT test app\CT test app\bin\Debug\CT test app.pdb
+C:\Users\joopi\Source\Repos\CT-test\CT test app\CT test app\obj\Debug\CT test app.csprojResolveAssemblyReference.cache
+C:\Users\joopi\Source\Repos\CT-test\CT test app\CT test app\obj\Debug\CT_test_app.Form1.resources
+C:\Users\joopi\Source\Repos\CT-test\CT test app\CT test app\obj\Debug\CT_test_app.Properties.Resources.resources
+C:\Users\joopi\Source\Repos\CT-test\CT test app\CT test app\obj\Debug\CT test app.csproj.GenerateResource.Cache
+C:\Users\joopi\Source\Repos\CT-test\CT test app\CT test app\obj\Debug\CT test app.exe
+C:\Users\joopi\Source\Repos\CT-test\CT test app\CT test app\obj\Debug\CT test app.pdb

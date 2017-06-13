@@ -27,8 +27,12 @@ namespace Beeldverwerkingswerkje
         static int lineLength = 600;
         static int sensorDistance = 300;
 
+        static int threshold = 40;
+
         double curAngle = 0;
         double angleIncrement = 0;
+
+
 
         List<Point> startPoints = new List<Point>();
         Bitmap sinogram = new Bitmap(1,1);
@@ -186,7 +190,7 @@ namespace Beeldverwerkingswerkje
                 Points[0] = new Point(start_x, start_y);
                 Points[1] = new Point(end_x, end_y);
 
-                if (sinogram.GetPixel(i, a).B < 10)
+                if (sinogram.GetPixel(i, a).B < threshold)
                 {
                     g.DrawLines(myPen, Points);
                 }

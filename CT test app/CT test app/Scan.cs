@@ -59,7 +59,7 @@ namespace CT_test_app
 
             scanData = new List<int>();
             sinogram = new Bitmap(numLinesPerScan, numSamplesPerLine);
-            intergrationDelay = 3 * 1000;
+            intergrationDelay = 1 * 1000;
             lightDelay = 10 * 1000;
 
             linStepDelay = 30;
@@ -68,8 +68,11 @@ namespace CT_test_app
             rotTime = ((500 + 20) * stepsPerRot);
 
             stepsPerSweep = Convert.ToInt32(200 * 16 * (scanDistance / 0.8));
-            sweepTime = 960832; //Convert.ToInt32(stepsPerSweep * (linStepDelay + 23.14336967 + (0.006068607 * linStepDelay)));
 
+            int[] timings = new int[7] { 0, 240980, 480940, 720884, 960832, 1200792, 1440736 };
+
+            sweepTime = timings[Convert.ToInt32(scanDistance)];  //; // 3cm = 960832; //Convert.ToInt32(stepsPerSweep * (linStepDelay + 23.14336967 + (0.006068607 * linStepDelay)));
+           
             lightDelay = Convert.ToInt32(sweepTime / numSamplesPerLine);
 
             Console.WriteLine("stepsPerRot: " + stepsPerRot + " rotTime: " + rotTime + " StepsPerSweep: " + stepsPerSweep + " sweepTime: " + sweepTime);
