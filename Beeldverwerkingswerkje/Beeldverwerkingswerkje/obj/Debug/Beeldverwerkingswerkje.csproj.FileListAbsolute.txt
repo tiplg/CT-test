@@ -7,3 +7,12 @@ D:\Github\CT test\Beeldverwerkingswerkje\Beeldverwerkingswerkje\obj\Debug\Beeldv
 D:\Github\CT test\Beeldverwerkingswerkje\Beeldverwerkingswerkje\obj\Debug\Beeldverwerkingswerkje.csproj.GenerateResource.Cache
 D:\Github\CT test\Beeldverwerkingswerkje\Beeldverwerkingswerkje\obj\Debug\Beeldverwerkingswerkje.exe
 D:\Github\CT test\Beeldverwerkingswerkje\Beeldverwerkingswerkje\obj\Debug\Beeldverwerkingswerkje.pdb
+C:\Users\joopi\Source\Repos\CT-test\Beeldverwerkingswerkje\Beeldverwerkingswerkje\bin\Debug\Beeldverwerkingswerkje.exe.config
+C:\Users\joopi\Source\Repos\CT-test\Beeldverwerkingswerkje\Beeldverwerkingswerkje\bin\Debug\Beeldverwerkingswerkje.exe
+C:\Users\joopi\Source\Repos\CT-test\Beeldverwerkingswerkje\Beeldverwerkingswerkje\bin\Debug\Beeldverwerkingswerkje.pdb
+C:\Users\joopi\Source\Repos\CT-test\Beeldverwerkingswerkje\Beeldverwerkingswerkje\obj\Debug\Beeldverwerkingswerkje.csprojResolveAssemblyReference.cache
+C:\Users\joopi\Source\Repos\CT-test\Beeldverwerkingswerkje\Beeldverwerkingswerkje\obj\Debug\Beeldverwerkingswerkje.Form1.resources
+C:\Users\joopi\Source\Repos\CT-test\Beeldverwerkingswerkje\Beeldverwerkingswerkje\obj\Debug\Beeldverwerkingswerkje.Properties.Resources.resources
+C:\Users\joopi\Source\Repos\CT-test\Beeldverwerkingswerkje\Beeldverwerkingswerkje\obj\Debug\Beeldverwerkingswerkje.csproj.GenerateResource.Cache
+C:\Users\joopi\Source\Repos\CT-test\Beeldverwerkingswerkje\Beeldverwerkingswerkje\obj\Debug\Beeldverwerkingswerkje.exe
+C:\Users\joopi\Source\Repos\CT-test\Beeldverwerkingswerkje\Beeldverwerkingswerkje\obj\Debug\Beeldverwerkingswerkje.pdb
